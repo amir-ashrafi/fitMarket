@@ -1,0 +1,10 @@
+.header_home .p-button{
+    background:none ;
+    border: none;
+}
+.header_home .p-button:has(.pi-search , .pi-bars ,.pi-shopping-cart ,.pi-sign-in ,.pi-heart):hover{
+    background-color: var(--color-indigo-500); /* قرمز */
+    border: none;
+    color: white;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}

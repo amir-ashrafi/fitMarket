@@ -1,0 +1,36 @@
+
+  <div class="hel flex top-0 left-0 sticky z-10  items-center bg-linear-to-t from-20% to-90% dark:bg-linear-to-t dark:to-80% shadow-sm dark:from-indigo-500/20 dark:to-indigo-900 backdrop-blur-lg  dark:shadow-indigo-300 from-indigo-500/10  rounded-b-2xl to-indigo-500/40  h-16 justify-between px-5 py-3">
+ 
+    <p-button
+    class="button dark:bg-white/5 bg-sky-50 rounded-xl border-none"
+    [pt]="{
+        icon:{
+        class:'dark:text-white text-indigo-800'}
+        }"
+    icon="pi pi-bars"
+    (onClick)="toggleMenu()"
+    />
+  
+    <div>
+    </div>
+    <div class="flex justify-center  items-center space-x-3 avatar">
+      <button class=" dark:bg-white/5 p-1.5 rounded-full  transition-all duration-300
+                cursor-pointer bg-indigo-50
+               hover:bg-gray-300/30 dark:hover:bg-white/30">
+        <p-avatar 
+        [pt]="{
+        icon:{
+        class:'dark:text-white text-indigo-800'}
+        }"  icon="pi pi-bell" class="avatar"  shape="circle" />
+      </button>
+      <app-theme-toggle/>
+    <button class="cursor-pointer  px-2 py-2 flex items-center rounded-xl transition-all duration-300 
+               hover:bg-gray-300/30 dark:hover:bg-white/30">
+      <p-avatar image="/images/icon-banner/ball.webp" class="avatar" shape="circle" />
+    </button>
+  </div>
+  
+  </div>
+<div class="h-4 lg:">
+
+</div>

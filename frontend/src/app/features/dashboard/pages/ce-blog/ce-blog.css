@@ -1,0 +1,37 @@
+.form_blog .p-editor{
+    background-color: var(--color-indigo-300);
+    border: solid 3px var(--color-indigo-800);
+    border-radius: 10px;
+}
+.form_blog .p-editor .p-editor-toolbar{
+    background-color: var(--color-white);
+
+}
+
+.form_blog .p-editor .p-editor-content .ql-editor{
+     background-color: var(--color-indigo-50);
+     color: black;
+     border-top: 2px solid blue;
+}
+.form_blog .p-editor .p-editor-content .ql-editor:focus{
+background-color: var(--color-blue-100);
+}
+.form_blog .p-button.p-component.p-button-secondary{
+background-color: var(--color-indigo-100);
+color: var(--color-indigo-800);
+border: 3px solid var(--color-indigo-800);
+}
+/* dark */
+html[data-theme="dark"] .form_blog .p-editor{
+    background-color: var(--color-indigo-950);
+    border: solid 3px var(--color-indigo-100);
+}
+html[data-theme="dark"] .form_blog .p-editor .p-editor-toolbar{
+    background-color: var(--color-indigo-950);
+}
+
+html[data-theme="dark"] .form_blog .p-editor .p-editor-content .ql-editor{
+     background-color: var(--color-indigo-950);
+     color: var(--color-indigo-100);
+     border-top: 2px solid var(--color-indigo-100);
+}

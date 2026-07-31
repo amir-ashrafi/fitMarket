@@ -1,0 +1,102 @@
+<section class="flex">
+  <p-card class="basis-1/4 max-w-2xl  mx-auto mt-6">
+      <p-card header="" class=" mx-auto ">
+        <p-avatar label="P" [style]="{ 'width':'150px','height':'135px'}" class="mr-2" size="xlarge" shape="circle" />
+        <p>نام کامل</p>
+        <p>dffdfd@gmail.com</p>
+      </p-card>
+      <p-card header="" class="max-w-2xl  mx-auto mt-6">
+        <p>اطلعات کاربر</p>
+        <form action="">
+          <p-iftalabel>
+    <input pInputText id="username" [(ngModel)]="value" [invalid]="!value" />
+    <label for="username">Username</label>
+</p-iftalabel>
+          <input pInputText [disabled]="true" [(ngModel)]="value" />
+        </form>
+      </p-card>
+  </p-card>
+
+  
+
+  <p-toast position="top-right"></p-toast>
+  
+  <p-card header="تنظیمات پروفایل" class="max-w-2xl mx-auto mt-6">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <!-- نام کامل -->
+      <div class="flex flex-col">
+        <label for="fullName" class="mb-2 font-medium">نام کامل</label>
+        <input
+          pInputText
+          id="fullName"
+          [(ngModel)]="profileForm().fullName"
+          class="w-full"
+        />
+      </div>
+  
+      <!-- ایمیل -->
+      <div class="flex flex-col">
+        <label for="email" class="mb-2 font-medium">ایمیل</label>
+        <input
+          pInputText
+          id="email"
+          type="email"
+          [(ngModel)]="profileForm().email"
+          class="w-full"
+        />
+      </div>
+  
+      <!-- شماره تماس -->
+      <div class="flex flex-col">
+        <label for="phoneNumber" class="mb-2 font-medium">شماره تماس</label>
+        <input
+          pInputText
+          id="phoneNumber"
+          [(ngModel)]="profileForm().phoneNumber"
+          class="w-full"
+        />
+      </div>
+    </div>
+  
+    <div class="mt-8">
+      <h3 class="font-semibold text-lg mb-4 text-surface-700 dark:text-surface-200">تغییر رمز عبور</h3>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <div class="flex flex-col">
+          <label for="currentPassword" class="mb-2 font-medium">رمز عبور فعلی</label>
+          <input
+            pPassword
+            id="currentPassword"
+            [(ngModel)]="profileForm().currentPassword"
+            [feedback]="false"
+            class="w-full"
+          />
+        </div>
+        <div class="flex flex-col">
+          <label for="newPassword" class="mb-2 font-medium">رمز عبور جدید</label>
+          <input
+            pPassword
+            id="newPassword"
+            [(ngModel)]="profileForm().newPassword"
+            [feedback]="true"
+            class="w-full"
+          />
+        </div>
+        <div class="flex flex-col">
+          <label for="confirmPassword" class="mb-2 font-medium">تکرار رمز عبور جدید</label>
+          <input
+            pPassword
+            id="confirmPassword"
+            [(ngModel)]="profileForm().confirmPassword"
+            [feedback]="false"
+            class="w-full"
+          />
+        </div>
+      </div>
+    </div>
+  
+    <div class="flex justify-end gap-3 mt-8">
+      <button pButton type="button" label="لغو" severity="secondary"></button>
+      <button pButton type="button" label="ذخیره تغییرات" (click)="onSubmit()"></button>
+    </div>
+  </p-card>
+</section>

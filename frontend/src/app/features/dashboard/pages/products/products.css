@@ -1,0 +1,134 @@
+
+.product-table .p-datatable,
+.product-table .p-datatable * {
+  transition: background-color 180ms ease, color 160ms ease, border-color 160ms ease,
+  box-shadow 200ms ease, opacity 160ms ease;
+  box-sizing: border-box;
+ --p-datatable-footer-cell-color:var(--color-red-500);
+  --p-iconfield-icon-color:var(--color-indigo-800);
+    --p-paginator-text-color:var(--color-red-500)
+}
+.product-table{
+    border-radius: 30px;
+}
+.product-table .p-toolbar{
+    border-radius: 20px 20px 0px 0px;
+    background-color: var(--color-indigo-400);
+
+}
+.product-table .p-component .p-paginator{
+    border-radius: 0px 0px 20px 20px;
+    background-color: var(--color-indigo-400);
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+}
+.product-table .p-component ,.product-table .p-toolbar{
+    border: none;
+}
+.product-table .p-toolbar{
+    display: flex;
+    justify-content: space-between;
+align-items: center;
+padding: 20px 15px;
+margin: 0;
+}
+
+.product-table .p-button{
+    background-color: var(--color-indigo-600);
+    color: white;
+    margin: 10px 5px 0px 5px;
+}
+.product-table  .p-button-danger{
+    background-color: var(--color-indigo-100);
+color: var(--color-red-600);
+border: solid red 2px;
+
+}
+.product-table .p-datatable-header{
+    background-color: var(--color-indigo-200);
+    padding: 0;
+}
+.product-table .p-inputtext{
+    background-color: var(--color-indigo-50);
+    border-radius: 30px;
+}
+.product-table .p-datatable-thead th{
+    background-color: var(--color-indigo-200);
+    color: var(--color-indigo-900);
+}
+.product-table .p-datatable-tbody tr{
+    background-color: var(--color-indigo-100);
+    color: var(--color-indigo-800);
+}
+html[data-theme="light"] .product-table .p-datatable-tbody tr:hover {
+  background: var(--color-indigo-400);
+  
+}
+.product-table .p-paginator-current{
+    color: white;
+    font-weight: bold;
+    margin-left: 20px;
+}
+
+.product-table .p-component .p-paginator .p-ripple{
+    background-color: var(--color-indigo-50);
+    color: var(--color-indigo-800);
+}
+
+/* .....
+...
+DARK MODE
+...
+..... */
+html[data-theme="dark"] .product-table{
+    background-color: var(--color-indigo-900);
+}
+html[data-theme="dark"] .product-table .p-toolbar{
+    background-color: var(--color-indigo-800);
+}
+html[data-theme="dark"] .product-table .p-component .p-paginator{
+    background-color: var(--color-indigo-800);
+}
+
+html[data-theme="dark"] .product-table .p-button{
+    background-color: var(--color-indigo-50);
+    color: var(--color-indigo-900);
+}
+html[data-theme="dark"] .product-table  .p-button-danger{
+    background-color: var(--color-indigo-100);
+color: var(--color-red-600);
+border: solid red 2px;
+
+}
+html[data-theme="dark"] .product-table .p-inputtext{
+    background-color: var(--color-indigo-800);
+    border: solid var(--color-indigo-100) 2px;
+    border-radius: 30px;
+}
+html[data-theme="dark"] .product-table .p-inputtext::placeholder{
+    color: aliceblue;
+}
+
+html[data-theme="dark"] .product-table .p-datatable-thead th{
+    background-color: var(--color-indigo-700);
+    color: var(--color-white);
+}
+html[data-theme="dark"] .product-table .p-datatable-tbody tr{
+    background-color: var(--color-indigo-800);
+    color: var(--color-white);
+}
+html[data-theme="dark"] .product-table .p-datatable-tbody tr:hover {
+  background: var(--color-indigo-400);
+  
+}
+.product-table .p-paginator-current{
+    color: white;
+    font-weight: bold;
+    margin-left: 20px;
+}
+
+.product-table .p-component .p-paginator .p-ripple{
+    background-color: var(--color-indigo-50);
+    color: var(--color-indigo-800);
+}

@@ -1,0 +1,16 @@
+<div class="item-features-home flex h-auto bg-indigo-600 md:px-10 md:pb-3 md:pt-1 gap-2 justify-center md:rounded-b-full" >
+    @for (item of features; track item.id) {
+        <div class="item-features-home flex flex-col xl:basis-1/6  items-center">
+            <span style="font-size: 1.2rem;padding: 8px 0px 5px 0px;" [className]="item.icon"></span>
+            <div class="flex text-slate-100 flex-col text-center justify-center items-center">
+                <span class="md:text-md lg:text-lg text-[0.7rem] font-bold w-full">
+                    {{item.header}}
+                </span>
+                <span class="md:text-sm lg:text-[1rem] text-[0.5rem]  font-normal">
+                    {{item.article}}
+                </span>
+            </div>
+        </div>
+
+    }
+</div>

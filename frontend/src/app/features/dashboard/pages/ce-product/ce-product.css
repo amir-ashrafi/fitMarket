@@ -1,0 +1,209 @@
+
+/* icon-input */
+.form_product  .p-inputgroup{
+    border: solid 0.14rem var(--color-indigo-700);
+    border-radius: 10px;
+}
+.form_product  .p-inputgroupaddon {
+background-color: var(--color-indigo-100);
+color: var(--color-indigo-700);
+font-weight: 900;
+border-left: solid 1px var(--color-indigo-800);
+}
+/* input */
+.form_product  .p-inputgroupaddon i{
+font-weight: 900;
+}
+.form_product .p-inputtext{
+background-color: var(--color-indigo-100);
+color: var(--color-indigo-900);
+}
+.form_product .p-inputtext::placeholder{
+color: var(--color-indigo-800);
+
+}
+
+/* category */
+.form_product .p-select-label{
+background-color: var(--color-indigo-100);
+
+}
+.form_product .p-inputwrapper .p-placeholder{
+    color: var(--color-indigo-700);
+    
+}
+
+.form_product .p-select-dropdown{
+background-color: var(--color-indigo-100);
+color: var(--color-indigo-800);
+
+}   
+/* count  */
+.form_product .count p-inputnumber{
+    display: flex;
+    flex-direction: row;
+    width: 10%;
+    align-items: center;
+    padding: 2px;
+    
+}
+
+.form_product .count .p-inputnumber-input{
+    color: var(--color-indigo-800);
+    border: none;
+    font-weight: 900;
+}
+.form_product .count .p-inputnumber-button{
+background-color: var(--color-white);
+height: 25px;
+width: 25px;
+color: var(--color-indigo-800);
+border: solid 2px var(--color-indigo-800);
+border-radius: 100%;
+}
+/* discound */
+.discount_form .p-datepicker input{
+    width: 100%;
+    max-width: 200px;
+    border:solid 2px var(--color-indigo-800);
+    border-radius: 8px;
+   
+}
+.discount_form  .p-datepicker-input-icon-container{
+   color: var(--color-indigo-600);
+}
+
+/* editor */
+.p-editor{
+    background-color: var(--color-indigo-100);
+    border: solid 2px var(--color-indigo-800);
+    border-radius: 10px;
+}
+.p-editor .p-editor-toolbar.ql-toolbar.ql-snow{
+    background-color: var(--color-indigo-100);
+    
+}
+.p-editor .p-editor-content.ql-container.ql-snow .ql-editor{
+    background-color: var(--color-indigo-100);
+    color: var(--color-indigo-900);
+    border-top: solid 2px var(--color-indigo-800);
+}
+/* upload */
+.p-component.p-fileupload.p-fileupload-advanced{
+    background-color: var(--color-indigo-100);
+    border: solid 3px var(--color-indigo-800);
+    margin-top: 20px;
+    color: var(--color-indigo-800);
+}
+.p-ripple.p-button.p-button-secondary.p-component.p-fileupload-cancel-button{
+    background-color: var(--color-indigo-100);
+    border: solid 3px var(--color-slate-400);
+    color: var(--color-black);
+}
+.p-ripple.p-button.p-button-secondary.p-component.p-fileupload-upload-button{
+        background-color: var(--color-slate-100);
+    border: solid 3px var(--color-slate-900);
+    color: var(--color-slate-900);
+}
+.p-ripple.p-button.p-component.p-fileupload-choose-button{
+            background-color: var(--color-blue-200);
+    border: solid 3px var(--color-indigo-800);
+    color: var(--color-indigo-800);
+    font-weight: bold;
+}
+
+/* dark mode */
+
+
+/* icon-input */
+html[data-theme="dark"] .form_product  .p-inputgroup{
+    border: solid 0.14rem var(--color-indigo-100);
+}
+
+html[data-theme="dark"] .form_product  .p-inputgroupaddon {
+background-color: var(--color-indigo-950);
+color: var(--color-indigo-100);
+font-weight: 900;
+border-left: solid 1px var(--color-indigo-100);
+}
+/* input */
+
+html[data-theme="dark"] .form_product .p-inputtext{
+background-color: var(--color-indigo-950);
+color: var(--color-indigo-100);
+}
+html[data-theme="dark"] .form_product .p-inputtext::placeholder{
+color: var(--color-indigo-100);
+
+}
+
+/* category */
+ html[data-theme="dark"] .form_product .p-select-label{
+background-color: var(--color-indigo-950);
+
+}
+ html[data-theme="dark"] .form_product .p-inputwrapper .p-placeholder{
+    color: var(--color-indigo-100);
+}
+
+ html[data-theme="dark"] .form_product .p-select-dropdown{
+background-color: var(--color-indigo-950);
+color: var(--color-indigo-100);
+
+}   
+
+
+html[data-theme="dark"] .form_product .count .p-inputnumber-input{
+    color: var(--color-indigo-100);
+}
+html[data-theme="dark"] .form_product .count .p-inputnumber-button{
+background-color: var(--color-indigo-950);
+color: var(--color-indigo-100);
+border: solid 2px var(--color-indigo-100);
+}
+/* discound */
+html[data-theme="dark"] .discount_form .p-datepicker input{
+    border:solid 2px var(--color-indigo-100);
+    
+}
+html[data-theme="dark"] .discount_form  .p-datepicker-input-icon-container{
+   color: var(--color-indigo-100);
+}
+
+/* editor */
+html[data-theme="dark"] .p-editor{
+    background-color: var(--color-indigo-950);
+    border: solid 2px var(--color-indigo-100);
+}
+html[data-theme="dark"] .p-editor .p-editor-toolbar.ql-toolbar.ql-snow{
+    background-color: var(--color-indigo-950);
+    
+}
+html[data-theme="dark"] .p-editor .p-editor-content.ql-container.ql-snow .ql-editor{
+    background-color: var(--color-indigo-950);
+    color: var(--color-indigo-100);
+    border-top: solid 2px var(--color-indigo-100);
+}
+/* upload */
+html[data-theme="dark"] .p-component.p-fileupload.p-fileupload-advanced{
+    background-color: var(--color-indigo-950);
+    border: solid 3px var(--color-indigo-100);
+    margin-top: 20px;
+    color: var(--color-indigo-100);
+}
+html[data-theme="dark"] .p-ripple.p-button.p-button-secondary.p-component.p-fileupload-cancel-button{
+    background-color: var(--color-indigo-950);
+    border: solid 3px var(--color-slate-100);
+    color: var(--color-indigo-100);
+}
+html[data-theme="dark"] .p-ripple.p-button.p-button-secondary.p-component.p-fileupload-upload-button{
+        background-color: var(--color-slate-900);
+    border: solid 3px var(--color-slate-50);
+    color: var(--color-slate-50);
+}
+html[data-theme="dark"] .p-ripple.p-button.p-component.p-fileupload-choose-button{
+            background-color: var(--color-blue-900);
+    border: solid 3px var(--color-indigo-50);
+    color: var(--color-indigo-100);
+    font-weight: bold;
+}

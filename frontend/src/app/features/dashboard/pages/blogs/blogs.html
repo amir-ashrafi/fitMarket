@@ -1,0 +1,125 @@
+<div class="card blog-table flex flex-col items-center">
+    <p-dataview #dv [value]="blogs()" [layout]="layout">
+        <ng-template #header>
+            <div class="flex justify-end bg-indigo-100">
+                <p-selectbutton [(ngModel)]="layout" [options]="options" [allowEmpty]="false">
+                    <ng-template #item let-item>
+                        <i class="pi " [ngClass]="{ 'pi-bars': item === 'list', 'pi-table': item === 'grid' }"></i>
+                    </ng-template>
+                </p-selectbutton>
+            </div>
+            <div>
+                
+            </div>
+        </ng-template>
+        <ng-template #list let-items>
+            <div class="bg-indigo-100" *ngFor="let item of items; let first = first">
+                <div
+                    class="flex flex-col sm:flex-row sm:items-center p-6 gap-4 bg-indigo-50 rounded-xl border border-slate-200 mx-5 my-3 shadow-md shadow-indigo-500"
+                    [ngClass]="{ 'border-t border-surface-200 dark:border-surface-700 ': !first }"
+                >
+                    <div class="md:w-40 relative h-20 rounded bg-white">
+                        <img
+                            class="block xl:block mx-auto rounded w-full"
+                            [src]="item.image"
+                            [alt]="item.name"
+                        />
+                        <p-tag
+                            [value]="item.inventoryStatus"
+                            [severity]="getSeverity(item)"
+                            class="absolute "
+                            [style.left.px]="4"
+                            [style.top.px]="4"
+                        />
+                    </div>
+                    <div class="flex flex-col md:flex-row justify-between md:items-center flex-1 gap-6">
+                        <div class="flex flex-col justify-between items-start gap-2">
+                            <div>
+                                <span class="font-semibold text-indigo-800 dark:text-surface-400 text-lg">{{ item.category }}</span>
+                            </div>
+                            <span class="text-md text-indigo-900 font-light">بهترین لوازم جانبی کلی یدر  سمایب ایبت یتبی یبیههصس یبیبینیبیبیبیبن بیبیبنگشثهف یثه</span>
+                        </div>
+                        <div class="flex flex-col md:items-end gap-8">
+                            <div class="button-table flex flex-row-reverse md:flex-col md:items-center gap-2">
+                                <div class="button_delate">
+                                    <button pButton icon="pi pi-trash" outlined ></button>
+                                </div>
+                                <button
+                                pButton
+                                icon="pi pi-pencil"
+                                [disabled]="item.inventoryStatus === 'OUTOFSTOCK'"
+                                class="flex-auto md:flex-initial whitespace-nowrap"
+                                ></button>
+                                <div class="button_like">
+                                    <button pButton icon="pi pi-heart" [outlined]="true"></button>
+                                </div>                                    
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </ng-template>
+        <ng-template #grid let-items>
+            <div class="grid grid-cols-12 gap-4">
+                <div *ngFor="let product of items" class="col-span-12 sm:col-span-6 md:col-span-4 xl:col-span-6 p-2">
+                    <div
+                        class="p-6 border bg-indigo-50 rounded-xl border-slate-200  shadow-md shadow-indigo-500  dark:border-surface-700  dark:bg-surface-900 flex flex-col"
+                    >
+                        <div class="bg-surface-50 flex justify-center rounded p-4">
+                            <div class="relative mx-auto">
+                                <img
+                                    class="rounded w-full"
+                                    [src]="'https://primefaces.org/cdn/primeng/images/demo/product/' + product.image"
+                                    [alt]="product.name"
+                                    style="max-width: 300px"
+                                />
+                                <p-tag
+                                    [value]="product.inventoryStatus"
+                                    [severity]="getSeverity(product)"
+                                    class="absolute"
+                                    [style.left.px]="4"
+                                    [style.top.px]="4"
+                                />
+                            </div>
+                        </div>
+                        <div class="pt-6">
+                            <div class="flex flex-row justify-between products-start gap-2">
+                                <div>
+                                    <span class="font-semibold text-indigo-800 dark:text-surface-400 text-lg">{{
+                                        product.category
+                                    }}</span>
+                                    <div>
+                                        <span class="text-md text-indigo-900 font-light">بهترین لوازم جانبی کلی یدر  سمایب ایبت یتبی یبیههصس یبیبینیبیبیبیبن بیبیبنگشثهف یثه</span>
+                                    </div>
+                                    
+                                </div>
+                                
+                            </div>
+                            <div class="flex flex-col gap-6 mt-6">
+                                <span class="text-2xl font-semibold">{{ product.price | currency: 'USD' }}</span>
+                                <div class="button-table flex gap-2">
+                                    <div class="button_delate">
+                                        <button pButton icon="pi pi-heart" outlined></button>
+                                    </div>
+                                    <button
+                                        pButton
+                                        icon="pi pi-pencil"
+                                        label="ویرایش"
+                                        [disabled]="product.inventoryStatus === 'OUTOFSTOCK'"
+                                        class="flex-auto whitespace-nowrap"
+                                    ></button>
+                                    <div class="button_like">
+                                        <button pButton icon="pi pi-trash" outlined></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </ng-template>
+    </p-dataview>
+    <div class="card flex justify-center fixed bottom-3 ">
+        <p-paginator (onPageChange)="onPageChange($event)" [first]="first" [rows]="rows" [totalRecords]="120" [rowsPerPageOptions]="[10, 20, 30]" />
+    </div>
+</div>

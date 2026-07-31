@@ -1,0 +1,407 @@
+<section class="details-wrapper" dir="rtl">
+  @if (product) {
+    
+    <div class="details-card grid-cols-12   w-full place-items-center lg:place-items-stretch">
+      <div class=" bg-white  md:grid md:place-self-start min-w-[280px] max-w-[500px] gap-0 ">
+        <div class=" bg-white rounded-2xl flex  border overflow-hidden">
+
+          <img
+            [src]="product.image || 'assets/default-product.png'"
+            [alt]="product.name"
+            class="h-[300px] w-9/12 bg-gray-100 rounded-xl  object-cover"
+          />
+          <div class="w-2/12 flex flex-col justify-between py-3">
+            <div class="flex flex-col items-center space-y-3">
+              <p-button
+                [icon]="isFavorite ? 'pi pi-window-maximize' : 'pi pi-eye'"
+                [outlined]="true"
+                class="button_icon"
+                styleClass="w-full"
+                (onClick)="toggleFavorite()"
+              />
+              <p-button
+                [icon]="isFavorite ? 'pi pi-heart-fill' : 'pi pi-heart'"
+                [outlined]="true"
+                class="button_icon"
+                styleClass="w-full"
+                (onClick)="toggleFavorite()"
+              />
+            </div>
+            <div class="flex flex-col items-center space-y-3">
+              <p-button
+              icon="pi pi-angle-right"
+              [outlined]="true"
+              class="button_icon"
+              styleClass="button_icon"
+              (onClick)="toggleFavorite()"
+            />
+            
+              <p-button
+              icon="pi pi-angle-left"
+              [outlined]="true"
+              class="button_icon"
+              styleClass="button_icon"
+              (onClick)="toggleFavorite()"
+            />
+            </div>
+            
+          </div>
+        </div>
+
+        <div dir="ltr" class="flex gap-3 mt-4 sm:mt-0 w-full scrollbar-thumb-indigo-100 overflow-x-auto justify-end lg:overflow-x-hidden   overflow-y-hidden whitespace-nowrap pb-2">
+          @for (item of example_product; track item.id) {
+            <div
+              class="flex-shrink-0 w-16 h-20 rounded-xl  overflow-hidden border cursor-pointer transition hover:scale-105"
+            >
+              <img
+                [src]="item.src"
+                class="w-ful h-full object-cover"
+                alt=""
+              />
+            </div>
+          }
+        </div>
+        <div class="w-full flex hidden lg:block justify-center">
+          <div class="w-[300px] scrollbar-thumb-indigo-50 overflow-x-auto">
+            <div class="flex gap-4 w-max">
+              @for (badge of trustBadges; track badge.title) {
+                <div class="trust-card shrink-0">
+                  <span class="trust-icon">{{ badge.icon }}</span>
+                  <span class="trust-title">{{ badge.title }}</span>
+                </div>
+              }
+            </div>
+          </div>
+  </div>
+      </div>
+
+      <div class="details-content md:min-h-[545px] md:place-self-start sm:w-full sm:max-w-full max-w-[500px] py-4 rounded-3xl">
+        <div>
+          <p class="text-slate-500 font-normal text-sm md:text-sm inline">
+            {{ product.category }}
+          </p>
+        </div>
+
+        <h1 class="text-2xl text-black font-semibold md:font-normal">{{ product.name }}</h1>
+
+        <div class="flex justify-start gap-2 items-center flex-wrap">
+          <div class="flex items-center gap-1">
+            <i class="pi pi-star-fill text-yellow-500"></i>
+            <span class="font-semibold text-slate-800 font-stretch-semi-expanded text-xl">{{ value_r }}.5</span>
+          </div>
+          <div class="flex gap-3">
+            <p class="text-md text-indigo-600 font-bold">نظر {{ product.reviewCount ?? 0 }}</p>
+            <p class="text-md text-indigo-500 font-bold">بازدید {{ product.views ?? 0 }}</p>
+          </div>
+        </div>
+
+        <p class="price">{{ product.price | number }} تومان</p>
+        <div class=" border-b-2 w-full border-slate-300 border-dashed "></div>
+        <div>
+          <p class="text-slate-800 font-bold text-lg mb-2">توضیحات:</p>
+        
+          <p
+            class="description transition-all duration-300"
+            [class.line-clamp-3]="!showFullDescription"
+          >
+            {{ product.description }}
+          </p>
+        
+          @if (product.description && product.description.length > 150) {
+            <button
+              class="mt-2 text-primary font-medium hover:underline"
+              (click)="showFullDescription = !showFullDescription"
+            >
+              {{ showFullDescription ? 'نمایش کمتر' : 'نمایش بیشتر' }}
+            </button>
+          }
+        </div>
+        @if (product?.color) {
+          <div class="option-block">
+            <p class="text-slate-600">
+              رنگ انتخاب شده:
+              <span class="font-normal text-slate-800">{{ selectedColorName }}</span>
+            </p>
+
+            <div class="flex flex-wrap gap-3">
+              @for (item of product.color; track $index) {
+                <button
+                  (click)="selectColor(item.hex)"
+                  (mouseenter)="hoverColor = item.hex"
+                  (mouseleave)="hoverColor = ''"
+                  [style.background]="selectedColor === item.hex || hoverColor === item.hex ? item.hex : '#fff'"
+                  [style.color]="selectedColor === item.hex || hoverColor === item.hex ? '#fff' : 'var(--color-slate-500)'"
+                  class="option-btn border-slate-500">
+                  <p class="font-light text-xs">{{ item.name }}</p>
+                </button>
+              }
+            </div>
+          </div>
+        }
+
+        @if (showSizes) {
+          <div class="option-block">
+            <div class="flex">
+              <p class=" text-slate-600">{{ sizeLabel }} </p>
+              <p class="text-slate-800"> : {{selectedSizeName}}</p>
+            </div>
+            
+            <div class="flex flex-wrap gap-3">
+              @for (size of availableSizes; track size) {
+                <button
+                  (click)="selectSize(size)"
+                  class="option-btn"
+                  [class.active-option]="selectedSize === size">
+                  <p class="text-xs font-normal">
+                    {{ size }}
+                  </p>
+                  
+                </button>
+              }
+            </div>
+          </div>
+        }
+
+        @if (showWeights) {
+          <div class="option-block">
+            <div class="flex flex-row">
+              <p class="text-slate-600">وزن :</p>
+              <p class="text-slate-800"> {{ selectedWeight || 'انتخاب نشده' }}</p>
+            </div>
+            
+            <div class="flex flex-wrap gap-3">
+              @for (weight of product.weights; track weight) {
+                <button
+                  (click)="selectWeight(weight.name)"
+                  class="option-btn"
+                  [class.active-option]="selectedWeight === weight.name">
+                  <p class="text-xs font-normal">
+                   {{ weight.name }} 
+                  </p>
+                </button>
+              }
+            </div>
+          </div>
+        }
+
+        @if (showFlavors) {
+          <div class="option-block">
+            <div class="flex">
+              <p class="text-slate-600">طعم : </p>
+              <p class="text-slate-800 font-medium">{{selectedFlavorName}}</p>
+            </div>
+            <div class="flex flex-wrap gap-3">
+              @for (flavor of product.flavors; track flavor) {
+                <button
+                  (click)="selectFlavor(flavor.name)"
+                  class="option-btn"
+                  [class.active-option]="selectedFlavor === flavor.name">
+                  <p class="font-normal text-xs">
+                    {{ flavor.name }}
+                  </p>
+                </button>
+              }
+            </div>
+          </div>
+        }
+        <div class="actions-grid">
+          <p-button
+            label="افزودن به سبد خرید"
+            icon="pi pi-shopping-cart"
+            iconPos="right"
+            severity="success"
+            styleClass="
+              w-full 
+              h-12 
+              rounded-xl 
+              cart-button-order-main
+              font-bold 
+              text-base
+              transition-all
+              duration-200
+              hover:scale-[1.02]
+            "
+            (onClick)="addToCart()"
+          />
+        </div>
+          <div class="w-full flex justify-center lg:hidden">
+                  <div class="w-[300px] scrollbar-thumb-indigo-50 overflow-x-auto">
+                    <div class="flex gap-4 w-max">
+                      @for (badge of trustBadges; track badge.title) {
+                        <div class="trust-card shrink-0">
+                          <span class="trust-icon">{{ badge.icon }}</span>
+                          <span class="trust-title">{{ badge.title }}</span>
+                        </div>
+                      }
+                    </div>
+                  </div>
+          </div>
+      </div>
+    </div>
+    <div class="recommended-section">
+            <section class=" border-t-2 border-gray-300 border-dashed pt-2">
+
+              <h2 class="recommended-title">محصولات پیشنهادی</h2>
+              <div class="grid grid-cols-2 gap-2 place-items-center md:recommended-list md:overflow-auto md:overflow-y-hidden md:flex">
+                @for (item of recommendedProducts; track item.id) {
+                  <app-card-products [product]="item" />
+                }
+              </div>
+            </section>
+    
+
+    </div>
+    @if (recommendedProducts.length > 0) {
+      <section class="reviews-section recommended-section1">
+        <div class="border-b-2 z-50 border-dashed border-slate-400">
+        </div>
+        <h2 class="section-heading pt-2">نظرات محصول</h2>
+      
+        <div class="border-2 border-dashed border-slate-300 p-4 mx-2 rounded-2xl">
+          <div class="overall-box">
+            <p class="overall-score">{{ overallRating }}</p>
+            <p-rating [(ngModel)]="value_r" [readonly]="true" [stars]="5" />
+            <p class="overall-count">از {{ product.reviewCount ?? 0 }} نظر</p>
+          </div>
+      
+          <div class="rating-chart">
+            @for (row of ratingBreakdown; track row.stars) {
+              <div class="chart-row">
+                <span>{{ row.stars }} ستاره</span>
+                <div class="chart-bar ">
+                  <div class="chart-fill" [style.width.%]="row.percent"></div>
+                </div>
+                <span class="">{{ row.percent }}%</span>
+              </div>
+            }
+          </div>
+        </div>
+        <section class="reviews-section mt-5 mb-2">
+          <div class="flex justify-between">
+            <h2 class="text-lg text-black font-bold">نظرات کاربران</h2>
+            <p-button iconPos="right" class="border-2 border-slate-200 rounded-xl mt-2 border-dashed" label="افزودن نظر" icon="pi pi-plus" severity="contrast" (onClick)="showReviewDialog = true" />
+
+          </div>
+          <p-dialog
+              [(visible)]="showReviewDialog"
+              [modal]="true"
+              [draggable]="false"
+              [resizable]="false"
+              [closable]="true"
+              [style]="{ width: '32rem'}"
+              styleClass="glass-review-dialog ">
+
+              <ng-template #header>
+                  <div class="flex items-center gap-2">
+                      <i class="pi pi-comments text-indigo-500"></i>
+                      <span class="font-bold text-lg text-slate-800">ثبت نظر</span>
+                  </div>
+              </ng-template>
+
+              <div class="flex flex-col gap-4">
+
+                <p-rating class="stars" [(ngModel)]="newReviewRating" />
+
+                  <textarea
+                      pTextarea
+                      [(ngModel)]="newReviewComment"
+                      rows="5"
+                      style="background-color: white; border: dashed 2px var(--color-slate-500);color: black;"
+                      class="w-full"
+                      placeholder="نظر خود را بنویسید...">
+                      
+                  </textarea>
+
+                  <div class="flex justify-between w-full gap-2 button_comment">
+                      <p-button
+                      class="w-full"
+                          label="ثبت نظر"
+                          icon="pi pi-send"
+                          (onClick)="submitReview(); showReviewDialog=false" />
+                      <p-button
+                          label="انصراف"
+                          severity="secondary"
+                          [text]="true"
+                          (onClick)="showReviewDialog=false" />
+
+                  </div>
+
+              </div>
+
+          </p-dialog>
+        </section>
+
+        <div class="reviews-list">
+          @for (review of product.reviews; track review.id) {
+            <article class="review-card">
+              <p-rating class="stars" [ngModel]="review.rating" [readonly]="true" [stars]="5" />
+              <div class="review-head">
+                <p class="text-black ">{{ review.comment }}</p>
+                <span class="text-slate-500 font-light text-sm">{{ review.date }}</span>
+              </div>
+              <div class="flex justify-between">
+                <div class="flex items-center justify-start space-x-2">
+              @if (review.profile_image?.length) {
+                <div class="review-image size-8 rounded-full overflow-hidden shrink-0">
+                  <img
+                      [src]="review.profile_image || 'assets/images/default-avatar.png'"
+                      alt="تصویر کاربر"
+                      class="w-full h-full object-cover"
+                  />
+              </div>
+              }       
+               <strong class="text-black font-extralight">{{ review.user }}</strong>
+
+              </div>
+              <div class="flex items-center gap-4 mt-3">
+
+                <div class="flex items-center gap-1  border-2 border-slate-200 rounded-lg">
+                    <p-button
+                        [icon]="review.userLiked ? 'pi pi-thumbs-up-fill' : 'pi pi-thumbs-up'"
+                        [text]="true"
+                        severity="success"
+                        (onClick)="likeReview(review)"
+                    />
+            
+                    @if(review.userLiked)
+                    {<span class="text-slate-500 pl-2">{{ review.likes }}</span>}
+                </div>
+            
+                <div class="flex items-center gap-1  border-2 border-slate-200 rounded-lg">
+                    <p-button
+                        [icon]="review.userDisliked ? 'pi pi-thumbs-down-fill' : 'pi pi-thumbs-down'"
+                        [text]="true"
+                        severity="danger"
+                        (onClick)="dislikeReview(review)"
+                    />
+                    @if(review.userDisliked){
+                      <span class="text-slate-500 pl-2">{{ review.dislikes }}</span>
+
+                    }
+                </div>
+            
+            </div>
+              </div>
+              
+            </article>
+
+          } @empty {
+            <p class="empty-reviews">هنوز نظری ثبت نشده است.</p>
+          }
+        </div>                  
+        <div dir="ltr" class="flex list_comment justify-center page_comment w-[200p]">
+          <p-paginator (onPageChange)="onPageChange($event)" [first]="first" [rows]="rows" [totalRecords]="12" [rowsPerPageOptions]="[5, 10, 15]" />
+      </div>
+
+      </section>
+
+        }
+      
+   } @else {
+        <div class="not-found">
+          <h2>محصول مورد نظر پیدا نشد</h2>
+          <a routerLink="/products" class="back-link">بازگشت به لیست محصولات</a>
+        </div>
+      }
+  
+</section>

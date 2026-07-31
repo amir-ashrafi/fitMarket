@@ -1,0 +1,26 @@
+:host ::ng-deep .p-datatable {
+  border-radius: 20px 0px 0px 20px;
+  overflow: hidden;
+
+}
+:host ::ng-deep .p-datatable-thead > tr > th {
+  color: var(--color-indigo-900) !important;
+    background: radial-gradient(circle at center, var(--color-white), var(--color-indigo-200)) !important;
+
+}
+
+:host ::ng-deep .p-datatable-tbody > tr:nth-child(even) {
+  background: linear-gradient(90deg, var(--color-blue-400), var(--color-indigo-400), var(--color-indigo-500)) !important;
+  color: var(--color-white) !important;
+}
+
+:host ::ng-deep .p-datatable-tbody > tr:nth-child(odd) {
+  background: linear-gradient(90deg, var(--color-indigo-50), var(--color-indigo-100), var(--color-indigo-200)) !important;
+  color: var(--color-black) !important;
+}
+:host ::ng-deep .p-datatable-tbody > tr > td,
+:host ::ng-deep .p-datatable-thead > tr > th {
+  padding: 12px 8px !important;
+  line-height: 1 !important;
+  text-align: center;
+}

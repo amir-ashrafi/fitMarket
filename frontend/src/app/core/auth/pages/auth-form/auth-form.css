@@ -1,0 +1,85 @@
+.p-password-overlay{
+    display: none;
+}
+.form_login_register{
+    --p-floatlabel-focus-color:var(--color-slate-500);
+    --p-floatlabel-on-active-background:var(--color-slate-200);
+}
+
+.form_class .p-selectbutton .p-togglebutton{
+    background-color: var(--color-slate-200);
+    border: solid 2px var(--color-slate-300);
+    color: var(--color-slate-500);
+}
+.form_class .p-selectbutton .p-togglebutton:hover{
+    background-color: var(--color-slate-200);
+    color: var(--color-slate-500);
+}
+.form_class .p-selectbutton .p-ripple.p-component.p-togglebutton.p-togglebutton-fluid.ng-untouched.ng-pristine.ng-valid:hover{
+    background-color: var(--color-slate-300);
+}
+.form_class .p-selectbutton .p-togglebutton-content:hover{
+    background-color: var(--color-indigo-400);
+    color: var(--color-slate-50);
+}
+.form_class .p-togglebutton-checked .p-togglebutton-content{
+    background-color: var(--color-indigo-500);
+    color: white;
+}
+
+.form_class .p-togglebutton-checked .p-togglebutton-content:hover{
+    background-color: var(--color-indigo-400);
+    color: white;
+}
+
+
+.form_login_register .p-floatlabel input{
+    background-color: var(--color-slate-200);
+    height: 40px;
+    width: 100%;
+    color: var(--color-slate-700);
+    padding: 0px 10px;
+    border-radius: 8px;
+    border: solid 2px var(--color-slate-300);
+}
+.form_login_register .p-password{
+    width: 100%;
+    
+}
+.form_login_register .p-floatlabel input:-webkit-autofill {
+  -webkit-text-fill-color: #000000;
+  box-shadow: 0 0 0 1000px var(--color-slate-200) inset;
+}
+.form_login_register .p-floatlabel label{
+    background-color: rgba(255, 255, 255, 0);
+    border-radius: 8px;
+}
+.form_login_register .p-floatlabel input:focus{
+    background-color: rgba(0, 133, 249, 0);
+    height: 40px;
+    width: 100%;
+    border-radius: 8px;
+    outline: none;
+    border: solid 2px var(--color-slate-500);
+}
+.form_login_register .p-button{
+    width: 100%;
+    background: var(--color-indigo-400);
+    border: none;
+    color: white;
+}
+
+.google-button .p-button{
+    width: 100%;
+    background: var(--color-indigo-400);
+    border: none;
+    color: white;
+}
+.google-button .p-button:hover{
+    background-color: var(--color-indigo-600);
+    color: white;
+}
+.form_login_register .p-button:hover{
+    background-color: var(--color-indigo-600);
+color: white;
+}

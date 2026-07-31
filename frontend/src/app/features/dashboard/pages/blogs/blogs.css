@@ -1,0 +1,36 @@
+.blog-table .p-component .p-dataview .p-dataview-grid{
+    padding: 25px;
+    margin: 25px;
+}
+.blog-table{
+    margin: 27px 40px;
+    padding: 15px 10px;
+    border-radius: 10px;
+    background-color: var(--color-indigo-100);
+    height: 100vh;
+}
+.blog-table .p-dataview-header {
+border-top-left-radius: 10px;
+border-top-right-radius: 10px;
+background-color: var(--color-indigo-100);
+border: none;
+}
+.blog-table .p-dataview-content{
+background-color: var(--color-indigo-100);
+
+}
+.blog-table .button-table .p-button{
+    background-color: var(--color-indigo-200);
+    color: var(--color-indigo-600);
+border: 1px var(--color-indigo-500) solid;
+}
+.blog-table .button-table .button_delate .p-button{
+background-color: var(--color-slate-200);
+color: var(--color-slate-600);
+border: 1px var(--color-slate-500) solid;
+}
+.blog-table .button-table .button_like .p-button.p-component.p-button-icon-only.p-button-outlined{
+background-color: var(--color-red-200);
+color: var(--color-red-600);
+border: 1px var(--color-red-500) solid;
+}

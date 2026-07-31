@@ -1,0 +1,73 @@
+@import "tailwindcss";
+@import "primeicons/primeicons.css";
+@import "tailwindcss-primeui";
+@custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
+
+
+.active-menu {
+  background-color:rgba(30, 14, 255, 0.094);
+  color: var(--color-indigo-900);
+  font-weight: bold;
+  border-right: 6px solid var(--color-indigo-900);
+}
+
+html[data-theme="dark"] .active-menu {
+  background-color: rgba(181, 161, 255, 0.406);
+  color: var(--color-white);
+  border-right: 6px solid var(--color-blue-100);
+
+}
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+
+.layout-container {
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden; 
+}
+
+.sidebar {
+  height: 100%;
+  overflow-y: auto;
+  box-sizing: border-box;
+}
+
+.main-content {
+  height: 100%;
+  overflow-y: auto;
+  box-sizing: border-box;
+}
+
+html[data-theme="dark"] .customer-table .p-datatable {
+  border-radius: 20px 0 0 20px;
+  overflow: hidden;
+}
+
+html[data-theme="dark"] .customer-table .p-datatable .p-datatable-thead > tr > th {
+  color: #ffffff !important;
+  background: radial-gradient(circle at center, #1e40af, #3b82f6) !important; 
+  padding: 12px 8px !important;
+  text-align: center;
+}
+
+html[data-theme="dark"] .customer-table .p-datatable .p-datatable-tbody > tr:nth-child(even) {
+  background: var(--color-blue-500)!important; 
+  color: #e2e8f0 !important;
+}
+
+html[data-theme="dark"] .customer-table .p-datatable .p-datatable-tbody > tr:nth-child(odd) {
+  background:var(--color-indigo-900) !important; 
+  color: white !important; 
+}
+
+html[data-theme="dark"] .customer-table .p-datatable .p-datatable-tbody > tr > td,
+html[data-theme="dark"] .customer-table .p-datatable .p-datatable-thead > tr > th {
+  padding: 12px 8px !important;
+  line-height: 1 !important;
+  text-align: center;
+}

@@ -1,0 +1,243 @@
+.custom-footer, .custom-footer * {
+  background-color: rgb(255, 0, 0) !important;
+}
+
+.users-table .p-datatable,
+.users-table .p-datatable * {
+  transition: background-color 180ms ease, color 160ms ease, border-color 160ms ease,
+  box-shadow 200ms ease, opacity 160ms ease;
+  box-sizing: border-box;
+ --p-datatable-footer-cell-color:var(--color-red-500);
+  --p-iconfield-icon-color:var(--color-indigo-800);
+    --p-paginator-text-color:var(--color-red-500)
+}
+/* ===========================
+LIGHT THEME
+=========================== */
+.users-table .p-datatable .p-button{
+  background-color: var(--color-indigo-600);
+  border: white 2px solid;
+  color: white;
+}
+.users-table .p-datatable .p-inputtext{
+  background-color: red;
+
+}
+.users-table .p-datatable .p-progressbar-value{
+  background-color: var(--color-indigo-500);
+  
+}
+.users-table .p-datatable p-paginator{
+  display: flex;
+  flex-direction: row;
+}
+.users-table .p-datatable .p-ripple{
+  color: var(--color-indigo-50);
+}
+.users-table .p-datatable .p-paginator-current{
+  color: var(--color-indigo-50);
+}
+.users-table .p-datatable .p-select{
+  background-color: var(--color-indigo-500);
+}
+.p-select-list{
+  background-color: var(--color-indigo-400);
+}
+.users-table .p-datatable .p-inputtext{
+  background-color: var(--color-indigo-100);
+  border: none;
+  border-radius: 20px;
+}
+.users-table .p-datatable .p-inputtext::placeholder {
+  color: var(--color-indigo-800);
+  font-size: 14px;
+  font-weight: 500;
+}
+.users-table .p-datatable .p-iconfield{
+  color: var(--color-indigo-900);
+  font-size: 14px;
+  font-weight: 500;
+}
+html[data-theme="light"] .users-table .p-datatable {
+  background: var(--color-indigo-100);
+  padding: 15px 30px;
+  
+  border-radius: 20px;
+  overflow: hidden;
+  border: 1px solid #e6e9ef;
+}
+
+
+/* header */
+html[data-theme="light"] .users-table .p-datatable-header {
+  background: var(--color-indigo-300);
+  margin-top: 20px;
+  padding: 20px 20px;
+  border-radius: 20px 20px 0px 0px;
+  border-bottom: 1px solid #0080ff;
+}
+
+
+
+html[data-theme="light"] .users-table .p-datatable-thead th {
+  background: var(--color-indigo-200);
+  color: var(--color-indigo-800);
+  border-bottom: 1px solid #eef2f6;
+}
+
+/* sortable / sort icons */
+html[data-theme="light"] .users-table .p-datatable-sort-icon,
+html[data-theme="light"] .users-table .p-sortable-column-icon {
+  color: var(--color-indigo-800);
+  font-weight: 900;
+}
+html[data-theme="light"] .users-table .p-datatable-sort-icon,
+html[data-theme="light"] .users-table .p-sortable-column-icon {
+  color: var(--color-indigo-800);
+  font-weight: 900;
+}
+
+
+/* tbody / rows */
+html[data-theme="light"] .users-table .p-datatable-tbody {
+  background: var(--color-indigo-100);
+  color: var(--color-indigo-800);
+  
+}
+html[data-theme="light"] .users-table .p-datatable-tbody tr {
+  background: transparent;
+  color: var(--color-indigo-800);
+}
+html[data-theme="light"] .users-table .p-datatable-tbody tr:hover {
+  background: var(--color-indigo-400);
+  
+}
+
+
+
+/* filter UI: buttons, overlay, constraints, rules */
+html[data-theme="light"] .users-table .p-datatable-filter {
+  color: var(--color-indigo-800);
+
+}
+
+
+html[data-theme="light"] .users-table .p-datatable-column-filter-button,
+html[data-theme="light"] .users-table .p-datatable-column-filter-clear-button {
+  background: transparent;
+  color: var(--color-indigo-800);
+  border: 1px solid transparent;
+  padding: .25rem .4rem;
+  border-radius: 6px;
+}
+
+
+/* ===========================
+Dark THEME
+=========================== */
+html[data-theme="dark"] .users-table .p-datatable .p-button{
+  background-color: var(--color-indigo-600);
+  color: white;
+}
+html[data-theme="dark"] .users-table .p-datatable .p-inputtext{
+  background-color: var(--color-indigo-800);
+
+}
+html[data-theme="dark"] .users-table .p-datatable .p-ripple{
+  color: var(--color-indigo-50);
+  
+}
+html[data-theme="dark"] .users-table .p-datatable .p-paginator-current{
+  color: var(--color-indigo-50);
+}
+html[data-theme="dark"] .users-table .p-datatable .p-select{
+  background-color: var(--color-indigo-500);
+}
+html[data-theme="dark"] .p-select-list{
+  background-color: var(--color-indigo-500);
+}
+html[data-theme="dark"] .users-table .p-datatable .p-inputtext{
+  background-color: var(--color-indigo-800);
+  border: 2px solid white;
+  border-radius: 20px;
+}
+html[data-theme="dark"] .users-table .p-datatable .p-inputtext::placeholder {
+  color: var(--color-indigo-50);
+  font-size: 14px;
+  font-weight: 500;
+}
+html[data-theme="dark"] .users-table .p-datatable .p-iconfield{
+  color: var(--color-indigo-50);
+  font-size: 14px;
+  font-weight: 500;
+}
+html[data-theme="dark"] .users-table .p-datatable {
+  background: var(--color-indigo-900);
+  padding: 15px 30px;
+  
+  border-radius: 20px;
+  overflow: hidden;
+  border: 2px solid white;
+}
+
+
+/* header */
+html[data-theme="dark"] .users-table .p-datatable-header {
+  background: var(--color-indigo-800);
+  margin-top: 20px;
+  padding: 20px 20px;
+  border-radius: 20px 20px 0px 0px;
+  border-bottom: 1px solid #0080ff;
+}
+
+
+
+html[data-theme="dark"] .users-table .p-datatable-thead th {
+  background: var(--color-indigo-600);
+  color: var(--color-white);
+  border-bottom: 1px solid #eef2f6;
+}
+
+html[data-theme="dark"] .users-table .p-datatable-sort-icon,
+html[data-theme="dark"] .users-table .p-sortable-column-icon {
+  color: var(--color-indigo-50);
+  font-weight: 900;
+}
+
+
+/* tbody / rows */
+html[data-theme="dark"] .users-table .p-datatable-tbody {
+  background: var(--color-indigo-900);
+  color: var(--color-white);
+}
+html[data-theme="dark"] .users-table .p-datatable-tbody tr {
+  background: transparent;
+  color: var(--color-white);
+  font-weight: bold;
+}
+html[data-theme="dark"] .users-table .p-datatable-tbody tr:hover {
+  background: var(--color-indigo-600);
+  
+}
+
+
+
+/* filter UI: buttons, overlay, constraints, rules */
+html[data-theme="dark"] .users-table .p-datatable-filter {
+  color: var(--color-red-500);
+
+}
+
+
+html[data-theme="dark"] .users-table .p-datatable-column-filter-button,
+html[data-theme="dark"] .users-table .p-datatable-column-filter-clear-button {
+  background: transparent;
+  color: var(--color-indigo-50);
+  border: 1px solid transparent;
+  padding: .25rem .4rem;
+  border-radius: 6px;
+}
+html[data-theme="dark"] .users-table .p-datatable .p-progressbar-value{
+  background-color: var(--color-indigo-50);
+  
+}

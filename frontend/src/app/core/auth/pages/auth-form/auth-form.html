@@ -1,0 +1,58 @@
+<div class="form_class lg:max-w-[310px] bg-[url('/login/14.jpg')] p-6 md:p-0 md:bg-none rounded-2xl lg:min-w-[300px] w-[300px]  md:w-full">
+  
+  <div class="mb-4">
+    <p-selectbutton
+    [options]="stateOptions"
+    [(ngModel)]="value"
+    optionLabel="label"
+    optionValue="value"
+    fluid
+    (onChange)="onStateChange($event)"
+  ></p-selectbutton>
+  </div>
+  @if (value ==='login') {
+    <form class="form_login_register"  [formGroup]="loginForm" (ngSubmit)="submit()">
+    <p-floatlabel variant="on" class="mb-3">
+      <input pInputText   placeholder=" "
+ formControlName="email" inputId="login-email" id="login_email" />
+      <label class="w-10 flex justify-center" for="login_email">ایمیل</label>
+    </p-floatlabel>
+    
+    <p-floatlabel variant="on" class="mb-3">
+      <p-password inputId="login-password" formControlName="password"></p-password>
+      <label class="flex w-14 justify-center" for="login-password">رمز عبور</label>
+    </p-floatlabel>
+    <p-button type="submit" label="ورود" ></p-button>
+  </form>
+}
+  @else if(value ==='register'){
+    <form class="form_login_register" [formGroup]="registerForm" (ngSubmit)="submit()">
+      <p-floatlabel variant="on" class="mb-3">
+        <input placeholder=" " pInputText formControlName="email" id="reg-email" />
+        <label for="reg-email">ایمیل</label>
+      </p-floatlabel>
+      <p-floatlabel variant="on" class="mb-3">
+        <p-password inputId="reg-password" formControlName="password"></p-password>
+        <label for="reg-password">رمز عبور</label>
+      </p-floatlabel>
+      <p-floatlabel variant="on" class="mb-3">
+        <p-password inputId="reg-confirm" formControlName="confirmPassword"></p-password>
+        <label for="reg-confirm">تکرار رمز عبور</label>
+      </p-floatlabel>
+      <p-button type="submit" label="ثبت‌نام" [disabled]="loading"></p-button>
+    </form>
+  }
+
+<div class="flex items-center my-4">
+  <hr class="flex-grow border-gray-300" />
+  @if (value === 'register') {
+    <span class="text-gray-400">با گوگل ثبت‌نام کنید</span>
+  }@else{
+    <span class="text-gray-400 font-extralight">با گوگل وارد شوید</span>
+  }
+  <hr class="flex-grow border-gray-300" />
+</div>
+<div class="google-button">
+    <p-button label="Google" icon="pi pi-google" />
+</div>
+</div> 

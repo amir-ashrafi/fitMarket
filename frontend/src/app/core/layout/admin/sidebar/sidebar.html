@@ -1,0 +1,26 @@
+<div class="bg-linear-to-t animate-fadeinright transition-transform  to-70% from-indigo-50  to-indigo-200 dark:from-indigo-500 dark:to-indigo-800 dark:text-white w-[250px] rounded-2xl lg:rounded-none lg:rounded-b-2xl sidebar absolute lg:relative pb-10">
+  <div class="card flex justify-start space-x-2 px-3 py-5 items-center font-semibold">
+    <p-image src="/fitmarket.webp" alt="Image" width="35" />
+    <p class="text-blue-900 dark:text-white font-semibold text-2xl">فیت مارکت</p>
+  </div>
+  <section class="mx-3 ">
+    @for(items of menuItem;track items.id){
+      <div class="flex flex-col">
+        <span class="font-semibold mx-3 mt-2 mb-1 dark:text-white text-slate-600">{{items.label}}</span>
+        @for(item of items.items;track item.id){
+          <a
+  (click)="menuControl()"
+  class="flex items-center space-x-2 text-slate-800 dark:text-white font-medium duration-300 hover:bg-indigo-600/20 hover:text-indigo-800 dark:hover:text-white dark:hover:bg-indigo-300/50 px-3 py-2 ml-2 rounded-xl border-r-4 border-transparent"
+  [routerLink]="item.routerLink"
+  routerLinkActive="active-menu"
+  [routerLinkActiveOptions]="{ exact: item.url === item.routerLink }"
+>
+            <span [classList]="item.icon"></span>
+            <span>{{item.label}}</span>
+          </a>
+        }
+      </div>
+    }
+  </section>
+
+</div>

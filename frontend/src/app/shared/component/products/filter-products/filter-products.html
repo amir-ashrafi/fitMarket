@@ -1,0 +1,114 @@
+@if(showfilter == false){<p-button
+  icon="pi pi-sliders-h"
+  label="فیلترها"
+  (onClick)="togglemenu()">
+</p-button>}
+@if(showfilter){<aside class="filters-panel" dir="rtl">
+  <div class="filters-header">
+    <h2 class="filters-title">فیلترها</h2>
+    <p-button
+      label="حذف فیلترها"
+      [text]="true"
+      severity="secondary"
+      size="small"
+      (onClick)="clearFilters()"
+    />
+  </div>
+
+  <section class="filter-section">
+    <h3 class="section-title">محدوده قیمت</h3>
+    <p-slider
+      [(ngModel)]="priceRange"
+      [range]="true"
+      [min]="minPrice"
+      [max]="maxPrice"
+      [step]="50000"
+      (onSlideEnd)="onPriceChange()"
+      class="w-full"
+    />
+    <div class="price-inputs">
+      <div class="price-field">
+        <label>از</label>
+        <p-inputnumber
+          [(ngModel)]="priceRange[0]"
+          [min]="minPrice"
+          [max]="priceRange[1]"
+          mode="decimal"
+          [useGrouping]="true"
+          (onInput)="onPriceChange()"
+          suffix=" تومان"
+        />
+      </div>
+      <div class="price-field">
+        <label>تا</label>
+        <p-inputnumber
+          [(ngModel)]="priceRange[1]"
+          [min]="priceRange[0]"
+          [max]="maxPrice"
+          mode="decimal"
+          [useGrouping]="true"
+          (onInput)="onPriceChange()"
+          suffix=" تومان"
+        />
+      </div>
+    </div>
+  </section>
+
+  <section class="filter-section">
+    <h3 class="section-title">دسته‌بندی</h3>
+    <app-category-component-small
+      [value]="mainCategory"
+      (valueChange)="onMainCategoryChange($event)"
+    />
+  </section>
+
+  @if(mainCategory=='supplements'){
+  <section class="filter-section">
+    <h3 class="section-title">مکمل‌های ورزشی</h3>
+    
+      <app-category-supplement
+      [value]="selectedSupplementTypes"
+      (valueChange)="onSupplementChange($event)"
+    />
+    
+    
+  </section>}
+
+  <!-- وسایل ورزشی -->
+  @if(mainCategory=='equipment'){
+
+  <section class="filter-section">
+    <h3 class="section-title">وسایل ورزشی</h3>
+    <app-category-sportsequipment
+      [value]="selectedEquipmentTypes"
+      (valueChange)="onEquipmentChange($event)"
+    />
+  </section>
+  }
+
+  < @if(mainCategory=='medicine'){
+  <section class="filter-section">
+    <h3 class="section-title">داروهای بدنسازی</h3>
+    <app-medicin-component
+      [value]="selectedMedicineTypes"
+      (valueChange)="onMedicineChange($event)"
+    />
+  </section>
+  }
+
+  <section class="filter-section">
+    <h3 class="section-title">برند</h3>
+    <app-brand-radio
+      [value]="selectedBrands"
+      (valueChange)="onBrandChange($event)"
+    />
+  </section>
+
+  <section class="filter-section">
+    <h3 class="section-title">وضعیت محصول</h3>
+    <app-discount-radio
+      [value]="statusFilters"
+      (valueChange)="onStatusChange($event)"
+    />
+  </section>
+</aside>}

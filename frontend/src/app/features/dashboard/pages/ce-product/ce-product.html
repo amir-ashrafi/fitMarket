@@ -1,0 +1,105 @@
+
+    <nav class="flex  justify-center md:py-5 w-full">
+    <section class="card w-full px-4 py-5 rounded-2xl sm:mx-5 bg-indigo-200 dark:bg-indigo-900 dark:border-2  max-w-[550px]">
+        <div class="">
+            <div class="form_product card grid grid-cols-1 gap-4">
+                <p-inputgroup >
+                    <p-inputgroup-addon>
+                        <i class="pi pi-user"></i>
+                    </p-inputgroup-addon>
+                    <input pInputText [(ngModel)]="text1" placeholder="نام محصول" />
+                </p-inputgroup>
+                <div class="flex w-full space-x-3 h-[46px]">
+                    <div class="basis-3/7">
+                        <p-inputgroup class="min">
+                        <p-inputgroup-addon>
+                            <i class="pi pi-map"></i>
+                        </p-inputgroup-addon>
+                        <p-select [(ngModel)]="selectedCity" [options]="cities" optionLabel="name" placeholder="نوع" />
+                        </p-inputgroup>
+                    </div>
+                    
+                    <div class="count card  flex pr-2   items-center bg-indigo-100 dark:bg-indigo-950 rounded-lg border-[3px] border-indigo-800 dark:border-indigo-100 basis-4/7 justify-between ">
+                        <div class="">
+                            <span class="flex text-indigo-700 dark:text-indigo-50">تعداد محصول</span>
+                        </div>
+                        <div class="flex">
+                          <p-inputnumber [(ngModel)]="value1" [showButtons]="true" buttonLayout="vertical" spinnerMode="vertical" inputId="vertical" [inputStyle]="{ width: '3rem' }">
+                            <ng-template #incrementbuttonicon>
+                                <span class="pi pi-plus"></span>
+                            </ng-template>
+                            <ng-template #decrementbuttonicon>
+                                <span class="pi pi-minus"></span>
+                            </ng-template>
+                        </p-inputnumber>  
+                        </div>
+                        
+                    </div>  
+                </div>
+                
+
+                <p-inputgroup>
+                    <p-inputgroup-addon>تومان</p-inputgroup-addon>
+                    <p-inputnumber [(ngModel)]="number" placeholder="قیمت" />
+                    
+                </p-inputgroup>
+
+
+                <div class="flex discount_form flex-row w-full justify-between max-w-[450px]">
+                    <div class="flex w-full max-w-[215px]">
+                      <p-inputgroup>
+                        <p-inputgroup-addon>
+                        <p-checkbox  name="discound" [(ngModel)]="checked" [binary]="true" variant="filled" />
+                        <label class="px-2" for="discound">اعمال تخفیف</label>
+                        </p-inputgroup-addon>
+                        @if (checked) {
+                            <p-inputnumber class="duration-700 animate-fadeinright  animation" [(ngModel)]="value2" inputId="percent" prefix="%" />
+
+                        }
+                    </p-inputgroup>  
+                    </div>
+                    @if (checked) {
+                        <div class="flex justify-end items-center w-full">
+                            <p-datepicker class="duration-700 animate-fadeinup animation" ngSkipHydration [(ngModel)]="date2" [iconDisplay]="'input'" [showIcon]="true" inputId="icondisplay" />
+                        </div> 
+                    }
+                    
+                </div>
+            </div>
+        </div>
+        <div class="card  mt-5 rounded-2xl">
+            <p-editor [(ngModel)]="text" [style]="{ height: '320px' }">
+        <ng-template #header>
+            <span class="ql-formats">
+                <button type="button" class="ql-bold" aria-label="Bold"></button>
+                <button type="button" class="ql-italic" aria-label="Italic"></button>
+                <button type="button" class="ql-underline" aria-label="Underline"></button>
+            </span>
+        </ng-template>
+        </p-editor>
+        </div>
+    
+    <div class="card">
+    <p-toast />
+    <p-fileupload name="demo[]" url="https://www.primefaces.org/cdn/api/upload.php" (onUpload)="onUpload($event)" [multiple]="true" accept="image/*" maxFileSize="1000000" mode="advanced">
+        <ng-template #empty>
+            <div>اول فایل را انتخاب و بعد اپلود کنید</div>
+        </ng-template>
+    </p-fileupload>
+</div>
+    <div class="card save_button flex font-bold mt-5 space-x-3">
+        <button class="text-indigo-600 dark:text-indigo-100 dark:bg-indigo-950 dark:border-indigo-100 bg-indigo-100 border-2 border-indigo-800 px-5 rounded-lg space-x-3 py-3 basis-2/3 flex items-center justify-center">
+            <span class="pi pi-check"></span>
+            <span >ذخیره</span>
+        </button>
+        <button class="bg-red-100 text-red-500 dark:bg-red-950 dark:text-red-50 dark:border-red-400 border-2 border-red-800 px-2 rounded-lg space-x-3 py-3 basis-1/5 flex items-center justify-center">
+            <span class="pi pi-trash"></span>
+            <span>حذف</span>
+        </button>
+        <button class="bg-slate-200 dark:bg-slate-900 dark:text-slate-50 dark:border-slate-50 text-slate-900 border-2 border-slate-800 px-2 rounded-lg space-x-3 py-3 basis-1/5 flex items-center justify-center">
+            <span class="pi pi-times"></span>
+            <span>خروج</span>
+        </button>
+    </div>
+</section>
+  </nav>

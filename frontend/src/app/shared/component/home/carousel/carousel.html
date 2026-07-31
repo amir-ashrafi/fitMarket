@@ -1,0 +1,10 @@
+<div class="card carousel w-full">
+    <p-galleria [value]="images()" [showItemNavigators]="true" [showThumbnails]="false" [showIndicators]="true" [showItemNavigatorsOnHover]="true" [circular]="true" [responsiveOptions]="responsiveOptions" [containerStyle]="{ 'max-width': '1500px'}">
+        <ng-template #item let-item>
+            <img [src]="item.itemImageSrc" style="width: 100%; display: block;" />
+        </ng-template>
+        <ng-template #thumbnail let-item> 
+            <img [src]="item.thumbnailImageSrc" style="display: block;" />
+        </ng-template>
+    </p-galleria>
+</div>

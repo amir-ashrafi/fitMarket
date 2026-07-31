@@ -1,0 +1,22 @@
+<section dir="rtl" class="flex min-h-screen bg-indigo-50 dark:bg-indigo-950 layout-container ">
+    <nav class="hidden lg:block overflow-y-visible">
+        <admin-sidebar/>
+    </nav>
+    @if(isMenuMobileOpen()) {
+  <nav (click)="closeMenu()" class="lg:hidden animate-alternate transition-all duration-500 bg-slate-500/60 backdrop-blur-sm  fixed w-full min-h-screen z-50">
+    <admin-sidebar [menuControl]="closeMenu" />
+  </nav>
+
+ 
+
+}
+    
+    <section class="main-content blur-none w-full relative">
+            <admin-header [menuOpenSignal]="isMenuMobileOpen" />
+        
+        <nav class="flex-1 overflow-auto">
+          <router-outlet />  
+        </nav>
+        
+    </section>
+</section>

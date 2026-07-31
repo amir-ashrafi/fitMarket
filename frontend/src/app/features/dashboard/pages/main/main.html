@@ -1,0 +1,60 @@
+<section class="px-10">
+    <div class=" p-8 grid gap-7 place-self-center sm:grid-cols-2 sm:p-5 place-items-center grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-4 ">
+        @for(card of cardMenu;track card.id){
+            <p-card [pt]="{
+            body:{
+            class:'bg-indigo-50 border-indigo-500 dark:bg-blue-950 dark:border-indigo-200 dark border-2 shadow-md shadow-blue-300 dark:shadow-indigo-600 rounded-lg'}}" class="w-full max-w-[320px] min-w-[290px] xl:min-w-[220px]">
+                <div class="flex spce justify-between">
+                    <div class="items-start flex flex-col mb-2">
+                        <p class="text-lg  font-bold text-indigo-800 dark:text-slate-100">{{card.name}}</p>
+                        <span class="text-xl  font-normall text-indigo-900 dark:text-slate-50 " >{{card.amount}}</span>
+                    </div>
+                    <div [classList]="card.color">
+                        <span [ngClass]="[card.icon, card.color_icon]" style="font-size: 1.6rem"></span>
+                    </div>
+                </div>
+                <div class="flex mt-2 text-indigo-950 dark:text-white">
+                    <span>{{card.changeAmount}}</span>
+                    <p>{{card.title}}</p>
+                </div>
+            </p-card>
+        }
+</div>
+<div class="md:p-8 w-full max-w-[1200px]  mt-5 grid gap-7 xl:place-self-center  sm:p-5 place-items-center grid-cols-1  xl:grid-cols-2 ">
+    <div class="card w-full max-w-[640px]  bg-indigo-100 dark:bg-blue-950 border-2 border-indigo-500 dark:border-indigo-100 shadow-md shadow-indigo-500 rounded-3xl">
+        <p-chart type="bar" [data]="data" [options]="options" class="h-[20rem] px-8 py-3 text-white" />
+    </div>
+
+    <div class="card customer-table w-full max-w-[640px]  bg-indigo-100 border-2 dark:border-indigo-100 shadow-md shadow-indigo-500 border-indigo-500  dark:bg-blue-950  pl-6 rounded-3xl py-4" dir="rtl" style="max-height: 330px; overflow: auto; ">
+        <p class="flex justify-center font-bold text-xl text-indigo-800 dark:text-indigo-50  pb-5">پنچ مشتری اخر</p>
+        <p-table class="heloo" [value]="customers" [(selection)]="selectedCustomer" dataKey="code" [tableStyle]="{'min-width': '20rem', 'min-height': '0rem'}">
+            <ng-template #header>
+            <tr>
+                <th style="width: 4rem">پرفایل</th>
+                <th>نام</th>
+                <th>شماره</th>
+                <th>ایمیل</th>
+                <th>مبلغ خرید</th>
+                <th>وضیعت پرداخت</th>
+            </tr>
+        </ng-template>
+        <ng-template  #body let-customer>
+            <tr>
+                <td>
+                    <img class="bg-white size-10 rounded-full" [src]="customer.image" alt="">
+                </td>
+                <td class="">{{customer.name}}</td>
+                <td class="">{{customer.number}}</td>
+                <td class="">{{customer.email}}</td>
+                <td class="">{{customer.amountShope}}</td>
+                <td class="">{{customer.status}}</td>
+            </tr>
+        </ng-template>
+    </p-table>
+</div>
+</div>
+<div class=" w-full max-w-[1200px] md:p-8 mt-5 grid gap-7 xl:place-self-center   sm:p-5 place-items-center grid-cols-1  xl:grid-cols-2">
+    <app-product-chart style="width: 100%;"/>
+    <app-view-chart style="width: 100%;"/>
+</div>
+</section>

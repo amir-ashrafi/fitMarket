@@ -1,0 +1,29 @@
+
+.new-product-home .vip-button button.p-button{
+background-color: white;
+border: solid 2px var(--color-indigo-400);
+border-radius: 50%;
+width: 140px;
+height: 120px;
+color: var(--color-indigo-800);
+margin-right:20px ;
+}
+.new-product-home .vip-button button.p-button:hover {
+    background-color: var(--color-indigo-500);
+    color: white;
+}
+.vip-button span{
+font-weight: 600;
+}
+.custom-scroll::-webkit-scrollbar {
+    height: 6px;
+}
+
+.custom-scroll::-webkit-scrollbar-thumb {
+    background: #cbd5e1;
+    border-radius: 999px;
+}
+
+.custom-scroll::-webkit-scrollbar-track {
+    background: transparent;
+}

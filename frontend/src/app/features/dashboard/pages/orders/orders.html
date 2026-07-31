@@ -1,0 +1,164 @@
+<div class="table-order p-10 bg-indigo-100 rounded-3xl card mx-10 my-8">
+    <p-toast />
+    <p-table [value]="customers" dataKey="id" [tableStyle]="{ 'min-width': '60rem' }" [expandedRowKeys]="expandedRows" (onRowExpand)="onRowExpand($event)" (onRowCollapse)="onRowCollapse($event)">
+        <ng-template #caption>
+            <div class="flex flex-wrap justify-end gap-2">
+                <p-button label="Expand All" icon="pi pi-plus" text (onClick)="expandAll()" />
+                <p-button label="Collapse All" icon="pi pi-minus" text (onClick)="collapseAll()" />
+            </div>
+        </ng-template>
+        <ng-template #header>
+            <tr>
+                <th style="width: 5rem"></th>
+                <th>تصویر کاربر</th>
+                <th>نام و نام خانوادگی</th>
+                <th>تاریخ خرید</th>
+                <th>شماره تماس</th>
+                <th>ایمیل</th>
+                <th>وضیعت سفارش</th>
+                <th>مجموع خرید</th>
+                <th>میزان رضایت</th>
+            </tr>
+            <tr>
+                <th>
+
+                </th>
+                <th>
+                    
+                </th>
+                <th>
+                    <p-inputgroup>
+                        <p-inputgroup-addon>
+                    <i class="pi pi-envelope"></i>
+                    </p-inputgroup-addon>
+                    <p-columnFilter type="text" field="name" placeholder="Type to search" ariaLabel="Filter Name"  filterOn="input"></p-columnFilter>
+                    </p-inputgroup>
+                </th>
+                <th>
+                    <p-inputgroup>
+                    <p-inputgroup-addon>
+                    <i class="pi pi-envelope"></i>
+                </p-inputgroup-addon>
+                        <p-datepicker ngSkipHydration [(ngModel)]="date" />
+                    </p-inputgroup>
+                </th>
+                <th>
+                    <p-inputgroup>
+                <p-inputgroup-addon>
+                    <i class="pi pi-envelope"></i>
+                </p-inputgroup-addon>
+
+                <input
+                    pInputText
+                    type="email"
+                    placeholder="ایمیل">
+                </p-inputgroup>
+                </th>
+                <th>
+                    <p-inputgroup>
+                    <p-inputgroup-addon>
+                        <i class="pi pi-envelope"></i>
+                    </p-inputgroup-addon>
+
+                    <input
+                        pInputText
+                        type="email"
+                        placeholder="ایمیل">
+                    </p-inputgroup>
+                </th>
+                <th></th>
+                <th>
+                    <input type="text" pInputText [(ngModel)]="value" class="w-full mb-4"/>
+                    <p-slider [(ngModel)]="value" class="w-full" />
+                </th>
+                <th>
+                    
+                </th>
+            </tr>
+            
+        </ng-template>
+        <ng-template #body let-customers let-expanded="expanded">
+            <tr>
+                <td>
+                    <p-button type="button" pRipple [pRowToggler]="customers" [text]="true" severity="secondary" [rounded]="true" [icon]="expanded ? 'pi pi-chevron-down' : 'pi pi-chevron-right'" />
+                </td>
+
+                <td><img [src]="'https://primefaces.org/cdn/primeng/images/demo/product/' + customers.avatar" [alt]="customers.name" width="50" class="shadow-lg" /></td>
+                <td>{{ customers.fullName }}</td>
+                <td>{{ customers.purchaseDate }}</td>
+                <td>{{ customers.phone }}</td>
+                <td>{{ customers.email }}</td>
+                <td>{{ customers.status }}</td>
+                <td>{{ customers.totalAmount | currency : 'USD' }}</td>
+                <td><p-rating [ngModel]="customers.rating" [readonly]="true" /></td>
+            </tr>
+        </ng-template>
+        <ng-template #expandedrow let-product>
+            <tr>
+                <td colspan="7">
+                    <div class="p-4">
+                        <h5>Orders for {{ product.name }}</h5>
+                        <p-table [value]="product.orders" dataKey="id">
+                            <ng-template #header>
+                                <tr>
+                                    <th pSortableColumn="id">
+                                        <div class="flex items-center gap-2">
+                                            ای دی محصول
+                                            <p-sortIcon field="price" />
+                                        </div>
+                                    </th>
+                                    <th pSortableColumn="customer">
+                                        <div class="flex items-center gap-2">
+                                            نام محصول
+                                            <p-sortIcon field="customer" />
+                                        </div>
+                                    </th>
+                                    <th pSortableColumn="date">
+                                        <div class="flex items-center gap-2">
+                                            تصویر محصول
+                                            <p-sortIcon field="date" />
+                                        </div>
+                                    </th>
+                                    <th pSortableColumn="amount">
+                                        <div class="flex items-center gap-2">
+                                            نوع
+                                            <p-sortIcon field="amount" />
+                                        </div>
+                                    </th>
+                                    <th pSortableColumn="amount">
+                                        <div class="flex items-center gap-2">
+                                            تعداد
+                                            <p-sortIcon field="amount" />
+                                        </div>
+                                    </th>
+                                    <th pSortableColumn="status">
+                                        <div class="flex items-center gap-2">
+                                            قیمت
+                                            <p-sortIcon field="status" />
+                                        </div>
+                                    </th>
+                                    <th style="width: 4rem"></th>
+                                </tr>
+                            </ng-template>
+                            <ng-template #body let-order>
+                                <tr>
+                                    <td>{{ order.id }}</td>
+                                    <td>{{ order.productName }}</td>
+                                    <td>{{ order.productImage }}</td>
+                                    <td>{{ order.category }}</td>
+                                    <td>{{ order.quantity }}</td>
+                                    <td>{{ order.price | currency : 'USD' }}</td>
+                                </tr>
+                            </ng-template>
+                            <ng-template #emptymessage>
+                                <tr>
+                                    <td colspan="6">There are no order for this product yet.</td>
+                                </tr>
+                            </ng-template>
+                        </p-table>
+                    </div>
+                </td>
+            </tr>
+        </ng-template>
+    </p-table>
+</div>

@@ -1,0 +1,16 @@
+[data-theme="dark"] {
+  --color-textColor:var(--color-indigo-100);
+  --color-textColorSecondary:var(--color-indigo-100);
+  --color-surfaceBorder:var(--color-indigo-100);
+  --color-background-chart:rgba(107, 61, 255, 0.688);
+  --color-background-chart-to:rgba(107, 61, 255, 0.688);
+  --color-border-chart:var(--color-indigo-400);
+}
+[data-theme="light"] {
+  --color-textColor:var(--color-indigo-800);
+  --color-textColorSecondary:var(--color-indigo-800);
+  --color-surfaceBorder:var(--color-indigo-500);
+  --color-background-chart:rgba(137, 73, 255, 0.691);
+  --color-background-chart-to:rgba(107, 61, 255, 0.688);
+  --color-border-chart:var(--color-indigo-500);
+}
