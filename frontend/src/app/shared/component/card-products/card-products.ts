@@ -16,7 +16,7 @@ import { Router } from '@angular/router';
 export class CardProducts {
 @Input() product!: Product;
 checked: boolean = false;
-
+@Input() viewType: 'default' | 'compact' = 'default';
 constructor(private readonly router: Router) {}
 
 goToDetails(): void {

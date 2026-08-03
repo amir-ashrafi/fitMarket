@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { DrawerModule } from 'primeng/drawer';
 import { ButtonModule } from 'primeng/button';
 import {
   FilterProducts,
@@ -7,11 +8,11 @@ import {
 import { CardProducts } from "../../shared/component/card-products/card-products";
 import { Product } from '../../../type';
 import { MOCK_PRODUCTS } from '../../shared/data/mock-products';
-
+import { BreakpointObserver } from '@angular/cdk/layout';
 @Component({
   selector: 'app-products',
   standalone: true,
-  imports: [ButtonModule, FilterProducts, CardProducts],
+  imports: [ButtonModule, FilterProducts, CardProducts, DrawerModule, ButtonModule],
   templateUrl: './products.html',
   styleUrl: './products.css',
 })
@@ -24,6 +25,20 @@ export class Products {
     { id: 4, name: 'پروفروش ترین', sort: 'best_seller' },
     { id: 5, name: 'بیشترین تخفیف', sort: 'best_discount' },
   ];
+  isMobile = false;
+  visibleLeft: boolean = false;
+  visibleRight: boolean = false;
+  visibleTop: boolean = false;
+  visibleBottom: boolean = false;
+  constructor(private breakpointObserver: BreakpointObserver) {}
+  
+  ngOnInit() {
+    this.breakpointObserver
+      .observe('(max-width: 640px)')
+      .subscribe(result => {
+        this.isMobile = result.matches;
+      });
+  }
   newProducts: Product[] = [...MOCK_PRODUCTS];
   selectedSortId = 0;
   selectedSort = 'relevant';

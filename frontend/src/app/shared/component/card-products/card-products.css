@@ -8,6 +8,10 @@ margin: 0;
 /* ===========================
    Card - Mobile (Default)
 =========================== */
+.mobile_card_products .p-card-body{
+    display: flex;
+    flex-direction: row;
+}
 .card-order-home .p-card {
     margin: 5px 6px;
     background-color: #ffffff;
