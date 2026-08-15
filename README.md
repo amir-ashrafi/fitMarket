@@ -63,3 +63,17 @@ sudo docker start mongodb
 - [ ] داینامیک کردن بخش فروشگاه (اتصال به بک‌اند)
 - [ ] داینامیک کردن پنل ادمین
 - [ ] تکمیل سایر امکانات پروژه
+## اسکرین‌شات‌ها
+
+### صفحه اصلی
+![Home Page](docs/screenshots/1.png)
+
+### صفحه محصولات
+![Products Page](docs/screenshots/2.png)
+
+### ورود
+![Login Page](docs/screenshots/3.png)
+
+### پنل ادمین
+![Admin Dashboard](docs/screenshots/4.png)
+![Admin Dashboard](docs/screenshots/5.png)
