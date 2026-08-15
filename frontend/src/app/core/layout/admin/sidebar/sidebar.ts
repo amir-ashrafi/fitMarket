@@ -1,4 +1,4 @@
-import { Component, input, OnInit } from '@angular/core';
+import { Component, input, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { ToastModule } from 'primeng/toast';
 import { ImageModule } from 'primeng/image';
 import { RouterModule } from '@angular/router';
@@ -12,6 +12,7 @@ import { selectIsDark, selectThemeMode } from '../../store';
   imports: [ ToastModule, ImageModule,RouterModule],
   standalone: true,
   templateUrl: './sidebar.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './sidebar.css',
 })
 export class Sidebar{

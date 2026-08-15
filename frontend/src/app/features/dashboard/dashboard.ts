@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core';
+import { Component, signal, ChangeDetectionStrategy } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { SplitterModule } from 'primeng/splitter';
 import { Header } from '../../core/layout/admin/header/header';
@@ -8,6 +8,7 @@ import { Sidebar } from '../../core/layout/admin/sidebar/sidebar';
   selector: 'app-dashboard',
   imports: [RouterOutlet, SplitterModule, Header, Sidebar],
   templateUrl: './dashboard.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './dashboard.css',
 })
 export class Dashboard {

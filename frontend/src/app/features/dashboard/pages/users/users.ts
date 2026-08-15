@@ -1,5 +1,5 @@
 
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation, ChangeDetectionStrategy } from '@angular/core';
 import { User ,Representative } from '../../../../../type';
 import { CustomerService } from '../../../../core/services/data-chart/customer';
 import { TableModule } from 'primeng/table';
@@ -26,6 +26,7 @@ import { Dialog } from 'primeng/dialog';
     CommonModule, MultiSelectModule, InputTextModule, SelectModule, Slider,FormsModule, ProgressBar,Dialog, ButtonModule, InputTextModule],
     providers: [CustomerService],
     
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './users.css',
 })
 export class Users implements OnInit{

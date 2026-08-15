@@ -1,35 +1,27 @@
-import { Component, OnInit, ViewEncapsulation, model } from '@angular/core';
+import { Component, OnInit,model} from '@angular/core';
 import { PhotoService } from '../../../../core/services/home/photoservice';
-import { GalleriaModule } from 'primeng/galleria';
+import { CarouselModule } from 'primeng/carousel';
+import { ChevronLeft } from '@primeicons/angular/chevron-left';
+import { ChevronRight } from '@primeicons/angular/chevron-right';
+interface CarouselSlide {
+  link: string;
+  name: string;
+}
 @Component({
   selector: 'app-carousel',
-  imports: [GalleriaModule],
+  imports:  [CarouselModule, ChevronLeft, ChevronRight],
   providers: [PhotoService],
   templateUrl: './carousel.html',
-  encapsulation:ViewEncapsulation.None,
+
   styleUrl: './carousel.css',
 })
-export class Carousel implements OnInit{
-images = model<any[]>([]);
-
-    responsiveOptions: any[] = [
-        {
-            breakpoint: '991px',
-            numVisible: 4
-        },
-        {
-            breakpoint: '767px',
-            numVisible: 3
-        },
-        {
-            breakpoint: '575px',
-            numVisible: 1
-        }
-    ];
-
-    constructor(private photoService: PhotoService) {}
-
-    ngOnInit() {
-        this.photoService.getImages().then((images:any) => this.images.set(images));
-    }
+export class CarouselWeb{
+  
+  items: CarouselSlide[] = [
+    { link: '', name: '/home/1.png' },
+    { link: '', name: '/home/2.png' },
+    { link: '', name: '/home/3.png' },
+    { link: '', name: '/home/4.png' },
+    { link: '', name: '/home/5.png' },
+  ];
 }

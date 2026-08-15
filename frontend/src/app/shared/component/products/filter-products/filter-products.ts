@@ -1,4 +1,4 @@
-import { Component, output } from '@angular/core';
+import { Component, output, ChangeDetectionStrategy } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Checkbox } from 'primeng/checkbox';
 import { Slider } from 'primeng/slider';
@@ -38,13 +38,13 @@ export interface ProductFilters {
   ],
   templateUrl: './filter-products.html',
   styleUrl: './filter-products.css',
+  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: true,
 })
 export class FilterProducts {
   readonly filtersChange = output<ProductFilters>();
   readonly minPrice = 0;
   readonly maxPrice = 10_000_000;
-  showfilter:boolean = false;
 
   priceRange: [number, number] = [0, 10_000_000];
 
@@ -58,9 +58,7 @@ export class FilterProducts {
   onPriceChange(): void {
     this.emitFilters();
   }
-  togglemenu():void{
-    this.showfilter= !this.showfilter;
-  }
+
   onMainCategoryChange(value: string | null): void {
     this.mainCategory = value;
     this.emitFilters();
@@ -100,7 +98,6 @@ export class FilterProducts {
     this.selectedBrands = [];
     this.statusFilters = [];
     this.emitFilters();
-    this.showfilter = false; 
   }
 
   get onlyAvailable(): boolean {

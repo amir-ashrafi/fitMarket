@@ -1,27 +1,65 @@
-# FitMarket 🏋️‍♂️🍎
+# FitMarket
 
-FitMarket is a modern web application designed for sports enthusiasts, fitness trainers, and those looking to buy/sell sports equipment. This project aims to bridge the gap between fitness services and a marketplace.
+فروشگاه آنلاین محصولات ورزشی و فیتنس — یک پروژه Full-Stack که با Angular و NestJS در حال توسعه است.
 
-> **⚠️ Status: Work in Progress**  
-> This project is currently unfinished and is under active development. Some features may be broken or incomplete.
+> ⚠️ **این پروژه هنوز در حال توسعه است** و بخش‌های زیادی از آن تکمیل نشده‌اند.
 
-## ✨ Features (Planned & Current)
-- [x] **User Authentication:** Login and Sign-up (In progress)
-- [ ] **Product Marketplace:** Browse and buy sports equipment.
-- [ ] **Workout Plans:** Access to customized training routines.
-- [ ] **Trainer Dashboard:** A place for coaches to manage clients.
-- [ ] **Shopping Cart:** Full e-commerce functionality.
+## تکنولوژی‌ها
 
-## 🛠 Tech Stack
-- **Frontend:** Angular
-- **Backend:** nest.js
-- **Database:** MongoDB
-- **Styling:** Tailwind CSS
+**Frontend**
+- Angular 22
+- TypeScript
+- RxJS
+- Tailwind CSS
+- PrimeNG
 
-## 🚀 Getting Started
+**Backend**
+- NestJS
+- MongoDB
 
-To get a local copy up and running, follow these steps:
+## وضعیت فعلی پروژه
 
-1. **Clone the repository:**
-   ```bash
-   git clone https://github.com/amir-ashrafi/FitMarket.git
+- ✅ بخش احراز هویت (Authentication) پیاده‌سازی و کار می‌کند
+- 🚧 بخش فروشگاه (Front) از نظر ظاهری طراحی شده اما هنوز داینامیک نیست
+- 🚧 پنل ادمین از نظر ظاهری طراحی شده اما هنوز داینامیک نیست
+
+### امکانات پیاده‌سازی‌شده در احراز هویت
+- Login
+- Register
+- Logout
+- Route Guard
+- Role-based Access
+- Token / JWT
+- LocalStorage
+- SessionStorage
+- Refresh Token
+
+## نحوه اجرای پروژه
+
+برای اجرای پروژه سه دستور زیر باید به صورت جداگانه اجرا شوند:
+
+```bash
+# اجرای فرانت‌اند
+npm start
+
+# اجرای بک‌اند
+npm run start:dev
+
+# اجرای دیتابیس (MongoDB با Docker)
+sudo docker start mongodb
+```
+
+## اطلاعات ورود ادمین
+
+برای تست بخش ادمین می‌توانید از اطلاعات زیر استفاده کنید:
+
+| فیلد | مقدار |
+|---|---|
+| Email | admin@test.com |
+| Password | 123456 |
+
+## نقشه راه (بخش‌های باقی‌مانده)
+
+- [ ] داینامیک کردن بخش فروشگاه (اتصال به بک‌اند)
+- [ ] داینامیک کردن پنل ادمین
+- [ ] تکمیل سایر امکانات پروژه

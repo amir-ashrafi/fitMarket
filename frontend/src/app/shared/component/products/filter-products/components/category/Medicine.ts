@@ -1,6 +1,7 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output, ChangeDetectionStrategy } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { MultiSelectModule } from 'primeng/multiselect';
+import { Select } from "primeng/select";
 
 interface MedicineOption {
   name: string;
@@ -10,28 +11,29 @@ interface MedicineOption {
 @Component({
   selector: 'app-medicin-component',
   standalone: true,
-  imports: [MultiSelectModule, FormsModule],
+  imports: [MultiSelectModule, FormsModule, Select],
+  changeDetection: ChangeDetectionStrategy.Eager,
   template: `
     <div class="flex justify-center">
-      <p-multiselect
+      <p-select
         [options]="medicineList"
         [(ngModel)]="value"
         (ngModelChange)="onChange($event)"
         optionLabel="name"
         optionValue="code"
         [showClear]="true"
-        [showHeader]="true"
-        [selectAll]="true"
+        [multiple]="true" 
         placeholder="انتخاب داروهای بدنسازی"
         class="w-full"
       >
+      
         <ng-template #selectedItems>
           <span>{{ getLabel() }}</span>
         </ng-template>
         <ng-template let-item #item>
           <span>{{ item.name }}</span>
         </ng-template>
-      </p-multiselect>
+      </p-select>
     </div>
   `,
 })

@@ -1,7 +1,9 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output, ChangeDetectionStrategy, OnChanges, SimpleChanges } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CheckboxModule } from 'primeng/checkbox';
 import { MultiSelectModule } from 'primeng/multiselect';
+import { Select } from "primeng/select";
+
 interface BrandOption {
   name: string;
   code: string;
@@ -10,13 +12,15 @@ interface BrandOption {
 @Component({
   selector: 'app-brand-radio',
   standalone: true,
-  imports: [CheckboxModule, MultiSelectModule, FormsModule],
+  imports: [CheckboxModule, MultiSelectModule, FormsModule, Select],
+  changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <div class="flex justify-center">
-      <p-multiselect
+      <p-select
         [options]="brandList"
-        [(ngModel)]="value"
+        [(ngModel)]="selectedBrand"
         (ngModelChange)="onChange($event)"
+        [multiple]="true"
         optionLabel="name"
         optionValue="code"
         [showClear]="true"
@@ -31,14 +35,15 @@ interface BrandOption {
         <ng-template #selectedItem>
           <span>{{ getLabel() }}</span>
         </ng-template>
-        <ng-template let-item #item>
-          <span>{{ item.name }}</span>
+        <ng-template let-brand #item>
+          <p-checkbox [ngModel]="isItemSelected(brand)" [binary]="true" [tabindex]="-1" [readonly]="true" />
+          <span class="pr-2">{{ brand.name }}</span>
         </ng-template>
-        </p-multiselect>
+      </p-select>
     </div>
   `,
 })
-export class Brand_Radio {
+export class Brand_Radio implements OnChanges {
   @Input() value: string[] = [];
   @Output() valueChange = new EventEmitter<string[]>();
 
@@ -51,30 +56,41 @@ export class Brand_Radio {
     { name: 'Optimum Nutrition', code: 'optimum' },
   ];
 
+  selectedBrand: string[] = [];
+
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes['value']) {
+      this.selectedBrand = this.value ?? [];
+    }
+  }
+
   onChange(val: string[]): void {
+    this.selectedBrand = val;
+    this.value = val;
     this.valueChange.emit(val);
   }
 
   getLabel(): string {
-    if (!this.value || this.value.length === 0) return '';
-    const first = this.brandList.find((c) => c.code === this.value[0])?.name ?? this.value[0];
-    return this.value.length > 1 ? `${first} (+${this.value.length - 1} مورد دیگر)` : first;
+    if (this.selectedBrand.length === 0) return '';
+    const first = this.brandList.find((c) => c.code === this.selectedBrand[0])?.name ?? this.selectedBrand[0];
+    return this.selectedBrand.length > 1 ? `${first} (+${this.selectedBrand.length - 1} more)` : first;
   }
 
   get allSelected(): boolean {
-    return this.value.length === this.brandList.length;
+    return this.selectedBrand.length === this.brandList.length;
   }
 
   get indeterminate(): boolean {
-    return this.value.length > 0 && !this.allSelected;
+    return this.selectedBrand.length > 0 && !this.allSelected;
   }
 
   isItemSelected(brand: BrandOption): boolean {
-    return this.value.includes(brand.code);
+    return this.selectedBrand.includes(brand.code);
   }
 
-  onToggleAll(checked: boolean): void {
+  onToggleAll(checked: boolean) {
     const val = checked ? this.brandList.map((c) => c.code) : [];
+    this.selectedBrand = val;
     this.value = val;
     this.valueChange.emit(val);
   }

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { DrawerModule } from 'primeng/drawer';
 import { ButtonModule } from 'primeng/button';
 import {
@@ -9,14 +9,24 @@ import { CardProducts } from "../../shared/component/card-products/card-products
 import { Product } from '../../../type';
 import { MOCK_PRODUCTS } from '../../shared/data/mock-products';
 import { BreakpointObserver } from '@angular/cdk/layout';
+import { InputGroupModule } from 'primeng/inputgroup';
+import { InputGroupAddonModule } from 'primeng/inputgroupaddon';
+import { InputTextModule } from 'primeng/inputtext';
+import { Search_C } from "../../shared/component/search/search";
+import { WindowMaximize } from '@primeicons/angular/window-maximize';
+import { PIcon } from "@primeicons/angular/p-icon";
+import { Location } from '@angular/common';
+
 @Component({
   selector: 'app-products',
   standalone: true,
-  imports: [ButtonModule, FilterProducts, CardProducts, DrawerModule, ButtonModule],
+  imports: [ButtonModule, FilterProducts, CardProducts, DrawerModule, InputGroupModule, InputGroupAddonModule, ButtonModule, InputTextModule, Search_C,DrawerModule, ButtonModule, WindowMaximize,PIcon],
   templateUrl: './products.html',
   styleUrl: './products.css',
 })
 export class Products {
+  
+  icons = ['sliders-v', 'sort-alt'];
   filter_button_info = [
     { id: 0, name: 'مرتبط ترین', sort: 'relevant' },
     { id: 1, name: 'جدید ترین', sort: 'newest' },
@@ -25,12 +35,15 @@ export class Products {
     { id: 4, name: 'پروفروش ترین', sort: 'best_seller' },
     { id: 5, name: 'بیشترین تخفیف', sort: 'best_discount' },
   ];
+  visible: boolean = false;
+  
   isMobile = false;
   visibleLeft: boolean = false;
   visibleRight: boolean = false;
   visibleTop: boolean = false;
   visibleBottom: boolean = false;
-  constructor(private breakpointObserver: BreakpointObserver) {}
+
+  constructor(private breakpointObserver: BreakpointObserver,private location: Location) {}
   
   ngOnInit() {
     this.breakpointObserver
@@ -51,5 +64,9 @@ export class Products {
 
   onFiltersChange(filters: ProductFilters) {
     this.activeFilters = filters;
+  }
+
+  goBack() {
+    this.location.back();
   }
 }

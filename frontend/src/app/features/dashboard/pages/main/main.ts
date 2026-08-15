@@ -1,7 +1,7 @@
 import { CardModule } from 'primeng/card';
 import { CardItem } from '../../../../../type';
 import { CommonModule, isPlatformBrowser } from '@angular/common';
-import { Component, OnInit, PLATFORM_ID, ChangeDetectorRef, inject, effect, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, PLATFORM_ID, ChangeDetectorRef, inject, effect, ViewEncapsulation, ChangeDetectionStrategy } from '@angular/core';
 import { ChartModule } from 'primeng/chart';
 import { AppConfigService } from '../../../../core/services/data-chart/appConfigService';
 import { DesignerService } from '../../../../core/services/data-chart/designer';
@@ -18,6 +18,7 @@ import { ViewChart } from "../../../../shared/component/view-chart/view-chart";
 
   templateUrl: './main.html',
   styleUrl: './main.css',
+ changeDetection: ChangeDetectionStrategy.Eager,
  encapsulation:ViewEncapsulation.Emulated
 })
 export class Main implements OnInit {

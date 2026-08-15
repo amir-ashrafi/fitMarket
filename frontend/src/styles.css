@@ -3,7 +3,9 @@
 @import "tailwindcss-primeui";
 @custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
 
-
+@theme {
+  --font-playful: 'Lalezar', sans-serif;
+}
 .active-menu {
   background-color:rgba(30, 14, 255, 0.094);
   color: var(--color-indigo-900);

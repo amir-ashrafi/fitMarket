@@ -1,3 +1,57 @@
 .active-filter {
     --p-button-primary-background: #10b981;
   }
+:host ::ng-deep .filters_products .p-drawer-content{
+ background-color: white;
+ }
+
+:host ::ng-deep .filters_products .p-drawer-header{
+    background-color: white;
+    padding: 10px 20px 0px 20px;
+  }
+
+:host ::ng-deep .p-drawer-title{
+    color: var(--color-gray-600);
+  }
+:host ::ng-deep .p-drawer-header .p-button-icon-only{
+  color: var(--color-gray-600);
+  border: solid var(--color-gray-400) 1px;
+}
+:host ::ng-deep .p-drawer-header .p-button-icon-only:hover{
+  color: var(--color-gray-600);
+  border: solid var(--color-gray-400) 1px;
+  background-color: var(--color-gray-200);
+}
+:host ::ng-deep .button_mobile{
+width: 100px;
+background-color: var(--color-gray-100);
+border: 2px solid var(--color-gray-300);
+}
+:host ::ng-deep .button_mobile:hover{
+  width: 100px;
+  background-color: var(--color-gray-200);
+  border: 2px solid var(--color-indigo-800);
+}
+
+:host ::ng-deep .button_relevant{
+    background-color: var(--color-white);
+    border: none;
+    color: var(--color-indigo-800);
+    border-bottom:1px solid var(--color-gray-300) ;
+}
+
+:host ::ng-deep .button_relevant:hover{
+    background-color: var(--color-gray-100);
+    border: none;
+    color: #4f46e5;
+    background-color: var(--color-indigo-50);
+    border-bottom:1px solid var(--color-gray-300) ;
+}
+:host ::ng-deep .button_relevant.active {
+  background-color: var(--color-indigo-500);
+  color: #fff;
+  border-bottom: 1px solid var(--p-primary-color, #4f46e5);
+}
+:host ::ng-deep .button_relevant.active i.pi-check {
+  color: #fff;
+}

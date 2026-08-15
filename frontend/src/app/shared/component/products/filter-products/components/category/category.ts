@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output, ChangeDetectionStrategy } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { SelectModule } from 'primeng/select';
 
@@ -13,6 +13,7 @@ interface CategoryOption {
   selector: 'app-category-component-small',
   standalone: true,
   imports: [SelectModule, FormsModule],
+  changeDetection: ChangeDetectionStrategy.Eager,
   template: `
     <div class="flex justify-center">
       <p-select

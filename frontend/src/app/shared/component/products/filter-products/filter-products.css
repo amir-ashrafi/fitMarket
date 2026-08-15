@@ -51,7 +51,15 @@
   font-size: 0.85rem;
   color: #64748b;
 }
-
+.price-header{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+:host ::ng-deep .filter-section .p-slider-handle{
+  background: rgba(0, 0, 0, 0);
+  transform: translateX(24px);
+}
 .price-field :host ::ng-deep .p-inputnumber,
 .price-field ::ng-deep .p-inputnumber {
   flex: 1;
@@ -76,4 +84,73 @@
 
 .checkbox-item:hover {
   color: #1e1b4b;
+}
+:host ::ng-deep .price-header .p-slider-range{
+background-color: var(--color-indigo-500);
+}
+:host ::ng-deep .price-field .p-inputnumber-input{
+background-color: white;
+color: #334155;
+border: 2px solid var(--color-gray-200);
+}
+:host ::ng-deep .filter-section .p-slider-handle::before{
+  background: var(--color-gray-400);
+}
+
+:host ::ng-deep .p-inputwrapper.p-select.ng-pristine.ng-valid{
+  background-color: var(--color-white);
+}
+:host ::ng-deep .section-input .p-select{
+  background-color: var(--color-gray-100);
+  border: 2px solid var(--color-gray-200);
+}
+:host ::ng-deep .section-input .p-select-list, :host ::ng-deep .section-input .p-select-overlay{
+  background-color: var(--color-gray-100);
+  border: none;
+  outline: none;
+}
+:host ::ng-deep .section-input .p-ripple.p-select-option.p-focus{
+background-color: var(--color-gray-200);
+}
+:host ::ng-deep .section-input span{
+  color: var(--color-gray-900);
+}
+:host ::ng-deep .section-input .p-select-option-check-icon.p-icon.p-icon-check{
+  color: var(--color-indigo-500);
+}
+:host ::ng-deep .section-input .p-checkbox-checked{
+background-color: var(--color-gray-100);
+border:none;
+outline: none;
+border-radius: none;
+}
+:host ::ng-deep .section-input .p-checkbox-box{
+  background-color: var(--color-gray-100);
+  border:var(--color-gray-500) 2px solid;
+  outline: none;
+  border-radius: none;
+  }
+:host ::ng-deep .section-input .p-select-option-selected{
+  background-color: var(--color-gray-300);
+}
+:host ::ng-deep .section-radio .p-togglebutton-fluid{
+  background-color: var(--color-white);
+  border: 2px solid var(--color-gray-200);
+}
+:host ::ng-deep .section-radio .p-togglebutton-fluid:hover{
+  background-color: var(--color-white);
+}
+:host ::ng-deep .section-radio .p-togglebutton-checked .p-togglebutton-content{
+  background-color: var(--color-indigo-100);
+  border: 2px solid var(--color-indigo-300);
+  color: var(--color-indigo-700);
+}
+:host ::ng-deep .section-radio .p-togglebutton-content:hover{
+  background-color: var(--color-indigo-100);
+  border: 1px solid var(--color-indigo-300);
+  color: var(--color-indigo-700);
+}
+:host ::ng-deep .p-select-label{
+  color: var(--color-gray-700);
+
 }

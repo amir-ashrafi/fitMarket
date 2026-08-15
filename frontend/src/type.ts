@@ -68,9 +68,11 @@ export interface Product {
   category?: string;
   image?: string;
   rating?: number;
+  discountPercent?: number;
+  discountExpiresAt?: string | Date;
   color?: ProductColor[];
   sizes?: Size_p[];
-  weights?:Weights_p[];
+  weights?: Weights_p[];
   flavors?: Flavors_p[];
   specs?: ProductSpec[];
   reviews?: ProductReview[];
@@ -111,13 +113,28 @@ export interface ProductReview {
 export interface Blog {
   id: string;
   title: string;
+  slug: string;
+  authorImage:string;
   author: string;
-  date: string; 
+  date: string;
+  link:string;
   summary: string;
   content: string;
-  category: 'Technology' | 'Sports' | 'Education' | 'Lifestyle'|'primary';
+
+  image: string;
+
+  category:
+    | 'Workout & Fitness'
+    | 'Sports Nutrition'
+    | 'Sports Supplements'
+    | 'Sports Equipment'
+    | 'Sports & Health'
+    | 'Buying Guide'
+    | 'Sports News';
+
   tags: string[];
-  readTime: number; 
+
+  readTime: number;
   featured: boolean;
 }
 // Theme website

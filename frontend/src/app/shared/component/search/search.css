@@ -1,0 +1,32 @@
+.search .p-inputgroup {
+    background-color: var(--color-white);
+    display: flex;
+    align-items: center;
+    border: 2px solid var(--color-gray-300);
+    justify-content: space-between;
+    padding: 5px 12px;
+    border-radius: 15px;
+    width: 100%;
+}
+
+.search .p-inputgroup input::placeholder {
+    color: var(--color-gray-400);
+    font-size: small;
+}
+
+.search .p-inputgroup input:focus {
+    color: var(--color-black);
+    font-size: small;
+    outline: none;
+}
+
+.search .p-inputgroup:has(input:focus) {
+    border: 2px solid var(--color-gray-400);
+    background-color: var(--color-gray-100);
+}
+.search .p-inputgroup input{
+    color: var(--color-black);
+    font-size: small;
+    border: none;
+    padding: 5px 0;
+}

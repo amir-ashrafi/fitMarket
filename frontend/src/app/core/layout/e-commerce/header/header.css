@@ -8,3 +8,88 @@
     color: white;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
 }
+/* اضافه کردن یه کلاس کاستوم به دکمه، مثلاً nav-btn */
+.nav-btn .p-button {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.35rem;
+    padding: 0.75rem 1rem;
+    margin-top: 0.2rem;
+    border-radius: 0.75rem;
+    transition: background-color 0.4s ease, color 0.2s ease;
+}
+
+.nav-btn .p-button svg.p-icon {
+    width: 22px;
+    height: 22px;
+}
+
+.nav-btn .p-button span {
+    font-size: 0.75rem;
+    font-weight: 500;
+    white-space: nowrap;
+}
+
+/* حالت hover */
+.nav-btn .p-button:hover {
+    background-color: var(--color-violet-600);
+    color: var(--p-primary-color, #6366f1);
+}
+.nav-btn .p-button:active {
+    background-color: var(--color-violet-600);
+    color: var(--p-primary-color, #6366f1);
+}
+
+/* حالت انتخاب‌شده (وقتی selectedIcon فعاله) */
+.nav-btn .p-button.active-icon {
+    color: var(--p-primary-color, #6366f1);
+    background-color: var(--p-primary-50, #eef2ff);
+}
+/* پس‌زمینه‌ی شیشه‌ای */
+.glass-nav {
+    background: rgba(31, 41, 55, 0.35); /* رنگ خاکستری تیره با شفافیت کم */
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-top: 1px solid rgba(255, 255, 255, 0.15);
+    box-shadow: 0 -4px 24px rgba(0, 0, 0, 0.15);
+}
+
+/* دکمه‌ها باید واضح‌تر از پس‌زمینه دیده بشن */
+.nav-btn.p-button {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.25rem;
+    padding: 0.6rem 1rem;
+    border-radius: 0.75rem;
+    background-color: rgba(255, 255, 255, 0.08);
+    transition: background-color 0.2s ease, transform 0.15s ease;
+}
+
+.nav-btn.p-button svg.p-icon {
+    width: 22px;
+    height: 22px;
+}
+
+.nav-btn.p-button span {
+    font-size: 0.7rem;
+}
+
+.nav-btn.p-button.active-icon svg,
+.nav-btn.p-button.active-icon span {
+    color: #6366f1 !important; /* یا هر رنگ برند خودت */
+}
+
+.button_header_desktop .button{
+    background-color: white;
+height: 40px;
+width: auto;
+padding: 15px;
+}
+.button_header_desktop .button:hover{
+    background-color: var(--color-indigo-600);
+color: white;
+}

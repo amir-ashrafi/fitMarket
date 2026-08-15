@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output, ChangeDetectionStrategy } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { SelectButtonModule } from 'primeng/selectbutton';
 
@@ -11,6 +11,7 @@ interface StatusOption {
   selector: 'app-discount-radio',
   standalone: true,
   imports: [SelectButtonModule, FormsModule],
+  changeDetection: ChangeDetectionStrategy.Eager,
   template: `
     <p-selectbutton
       [options]="stateOptions"

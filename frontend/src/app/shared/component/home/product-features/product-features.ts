@@ -1,10 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { Features } from '../../../../../type';
 
 @Component({
   selector: 'app-product-features',
   imports: [],
   templateUrl: './product-features.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './product-features.css',
 })
 export class ProductFeatures {

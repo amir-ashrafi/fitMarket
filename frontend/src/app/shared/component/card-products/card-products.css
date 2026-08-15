@@ -15,7 +15,7 @@ margin: 0;
 .card-order-home .p-card {
     margin: 5px 6px;
     background-color: #ffffff;
-    height: 330px;
+    height: 420px;
     border: 1px solid;
     border-color: #ffffff;
     border-radius: 18px;
@@ -34,7 +34,7 @@ margin: 0;
     margin-left: 4px;
     flex-direction: column;
     justify-content: space-between;
-    height: 320px;
+    height: 410px;
 }
 
 .card-order-home .card-order {
@@ -47,53 +47,44 @@ margin: 0;
     display: flex;
     justify-content: center;
     align-items: center;
-    color: var(--color-indigo-900);
+    padding: 8px 15px;
+    color: var(--color-indigo-800);
     background-color: var(--color-white);
-    border: 2px dashed var(--color-indigo-200);
+    border: 2px solid var(--color-indigo-400);
+    border-radius: 10px;
     width: 100%;
+    min-width: 180px;
+    margin-bottom:2px ;
 }
 
 .card-order-home .card-order button.p-button:hover {
     background-color: var(--color-indigo-600);
     color: var(--color-white);
     transform: scale(1.05);
-    border-radius: 10px;
+    transition: ease-in;
+    transition-duration: 100ms;
 }
 
-.card-order-home .card-order .p-togglebutton {
-    width: 60px;
-    height: 50px;
-    padding: 0 10px 0 0;
-    border-radius: 50%;
-    background: #ffffff;
-    border: none;
 
-    display: flex;
-    justify-content: center;
-    align-items: center;
 
-    transition: all 0.2s ease;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
-}
-
-.card-order-home .card-order .p-togglebutton:hover {
-    transform: scale(1.05);
-    background-color: white;
-}
 
 .card-order-home .card-order .p-togglebutton:hover .p-togglebutton-icon {
     transform: scale(1.05);
     color: red;
 }
+.liked .p-ripple.p-component.p-togglebutton.ng-valid{
+    background-color: white;
+    border: 1px solid white;
+    display: flex;
+    justify-content: center;
+    border-radius: 100%;
+    box-shadow: 2px 0px 10px var(--color-gray-300);
+}
 
-.card-order-home .card-order .p-togglebutton[data-p-checked="true"] .p-togglebutton-icon {
-    color: red;
+.liked .p-togglebutton[data-p-checked="true"] span {
     background-color: white;
 }
 
-.card-order-home .card-order .p-togglebutton[data-p-checked="true"] span {
-    background-color: white;
-}
 :host ::ng-deep .cart-toggle-btn .p-button-label {
     opacity: 0 !important;
     transition: opacity 0.2s ease-in-out !important;

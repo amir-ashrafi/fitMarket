@@ -1,0 +1,39 @@
+<div [routerLink]="blog().link" class="bg-white w-[320px] rounded-lg cursor-pointer  h-[450px] gap-5 flex flex-col mb-2">
+<div class="relative rounded-t-2xl">
+    <img [src]="blog().image" class="bg-cover w-full h-[220px] rounded-t-lg" alt="">
+    <span class="text-white font-bold font-stretch-90% absolute rounded-md top-3 px-1.5 text-xs py-0.5 left-3 bg-indigo-700">{{blog().category}}</span>
+</div>
+<div class="flex flex-row justify-between items-center px-2">
+    <div class="flex flex-wrap  gap-2">
+
+    @for (tag of blog().tags; track $index) {
+        <p-tag severity="info" [value]="tag" [rounded]="true" />
+    }
+    </div>
+    <div class="w-[90px] justify-end space-x-1.5 ml-2 flex items-center">
+        <span class="text-gray-500 text-xs">{{blog().date}}</span>
+        <svg size="16" class="text-gray-500" data-p-icon="calendar"></svg>
+    </div>
+</div>
+<div class="flex flex-col gap-2 px-2">
+    <span class="text-md font-bold line-clamp-1 text-black">
+        {{blog().title}}
+    </span>
+    <span class="text-sm text-gray-600 line-clamp-2">
+        {{blog().summary}}
+    </span>
+</div>
+<div class="w-full px-2 pl-4 flex justify-between items-center mt-5">
+    <div class=" flex justify-center gap-3 items-center">
+        <button pButton class="text-white bg-indigo-500 hover:bg-indigo-600 px-2 py-1 size-10 items-center rounded-full flex" iconOnly aria-label="Save"><svg size="22" data-p-icon="angle-right"></svg></button>
+        <span class="text-xs text-gray-600">
+            {{blog().readTime}}
+            <span>ساعت مطالعه</span>
+        </span>
+    </div>
+    <div class="flex items-center justify-center gap-2">
+        <span class="text-black text-xs font-bold">{{blog().author}}</span>
+        <p-avatar [image]="blog().authorImage" size="normal" shape="circle" />
+    </div>
+</div>
+</div>

@@ -1,6 +1,7 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output, ChangeDetectionStrategy } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { MultiSelectModule } from 'primeng/multiselect';
+import { Select } from "primeng/select";
 
 interface EquipmentOption {
   label: string;
@@ -11,10 +12,11 @@ interface EquipmentOption {
 @Component({
   selector: 'app-category-sportsequipment',
   standalone: true,
-  imports: [MultiSelectModule, FormsModule],
+  imports: [MultiSelectModule, FormsModule, Select],
+  changeDetection: ChangeDetectionStrategy.Eager,
   template: `
     <div class="flex justify-center">
-      <p-multiselect
+      <p-select
         [options]="equipmentList"
         [(ngModel)]="value"
         (ngModelChange)="valueChange.emit($event)"
@@ -24,8 +26,11 @@ interface EquipmentOption {
         placeholder="انتخاب وسایل ورزشی"
         class="w-full"
       >
-        <ng-template #selectedItems>
-          <span>{{ getLabel() }}</span>
+        <ng-template #selectedItem let-selectedOption>
+          <div class="flex items-center gap-2">
+            <span>{{ selectedOption.icon }}</span>
+            <span>{{ selectedOption.label }}</span>
+          </div>
         </ng-template>
         <ng-template let-item #item>
           <div class="flex items-center gap-2">
@@ -33,7 +38,7 @@ interface EquipmentOption {
             <span>{{ item.label }}</span>
           </div>
         </ng-template>
-      </p-multiselect>
+      </p-select>
     </div>
   `,
 })
@@ -50,9 +55,4 @@ export class Sportsequipment {
     { label: 'اکسسوری تمرین', value: 'accessories', icon: '🎒' },
   ];
 
-  getLabel(): string {
-    if (!this.value || this.value.length === 0) return '';
-    const first = this.equipmentList.find((e) => e.value === this.value[0])?.label ?? this.value[0];
-    return this.value.length > 1 ? `${first} (+${this.value.length - 1} مورد دیگر)` : first;
-  }
 }

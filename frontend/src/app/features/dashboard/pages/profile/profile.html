@@ -9,10 +9,10 @@
         <p>اطلعات کاربر</p>
         <form action="">
           <p-iftalabel>
-    <input pInputText id="username" [(ngModel)]="value" [invalid]="!value" />
-    <label for="username">Username</label>
-</p-iftalabel>
-          <input pInputText [disabled]="true" [(ngModel)]="value" />
+            <input pInputText id="username" [(ngModel)]="value" name="username" [invalid]="!value" />
+            <label for="username">Username</label>
+          </p-iftalabel>
+          <input pInputText [disabled]="true" [(ngModel)]="value" name="usernameDisabled" />
         </form>
       </p-card>
   </p-card>

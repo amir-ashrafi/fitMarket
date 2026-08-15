@@ -1,4 +1,4 @@
-import { Component, ViewEncapsulation } from '@angular/core';
+import { Component, ViewEncapsulation, ChangeDetectionStrategy } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { EditorModule } from 'primeng/editor';
 import { ButtonGroupModule } from 'primeng/buttongroup';
@@ -38,6 +38,7 @@ code:string,
   providers:[MessageService],
   encapsulation:ViewEncapsulation.None,
     templateUrl: './ce-product.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './ce-product.css',
 })
 export class CeProduct {

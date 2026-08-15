@@ -1,4 +1,4 @@
-import { Component, ViewEncapsulation } from '@angular/core';
+import { Component, ViewEncapsulation, ChangeDetectionStrategy } from '@angular/core';
 import { AuthForm } from "../auth-form/auth-form";
 
 @Component({
@@ -6,6 +6,7 @@ import { AuthForm } from "../auth-form/auth-form";
   imports: [AuthForm],
   encapsulation:ViewEncapsulation.None,
   templateUrl: './login.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './login.css',
 })
 export class Login {

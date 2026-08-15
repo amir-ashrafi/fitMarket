@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core';
+import { Component, signal, ChangeDetectionStrategy } from '@angular/core';
 import { CardModule } from 'primeng/card';
 import { PasswordModule } from 'primeng/password';
 import { ButtonModule } from 'primeng/button';
@@ -27,6 +27,7 @@ import { FormsModule } from '@angular/forms';
 ],
   providers: [MessageService,AvatarModule,OverlayBadgeModule,IftaLabelModule, InputTextModule, FormsModule],
   templateUrl: './profile.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './profile.css',
 })
 export class Profile {

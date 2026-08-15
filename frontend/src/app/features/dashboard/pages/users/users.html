@@ -20,38 +20,38 @@
         <ng-template #caption>
             <div class="flex space-x-1 justify-between">
                 <p-button class="" [outlined]="true" icon="pi pi-filter-slash" label="Clear" (click)="clear(dt)" />
-                <p-iconField  iconPosition="left">
-                    <p-inputIcon>
+                <p-icon-field  iconPosition="left">
+                    <p-inputicon>
                         <i class="pi pi-search dark:text-white"></i>
-                    </p-inputIcon>
+                    </p-inputicon>
                     <input class="w-full max-w-[300px]" pInputText type="text" [(ngModel)]="searchValue" (input)="dt.filterGlobal($event.target.value, 'contains')" placeholder="Keyboard Search" />
-                </p-iconField>
+                </p-icon-field>
             </div>
         </ng-template>
         <ng-template #header>
             <tr>
                 <th style="width: 4rem">
-                    <p-tableHeaderCheckbox />
+                    <p-tableheadercheckbox />
                 </th>
                 <th pSortableColumn="name" style="min-width: 14rem">
                     <div class="flex justify-between items-center gap-2">
                         نام کاربر
-                        <p-sortIcon field="name" />
-                        <p-columnFilter type="text" field="name" display="menu" class="ml-auto" />
+                        <p-sort-icon field="name" />
+                        <p-column-filter type="text" field="name" display="menu" class="ml-auto" />
                     </div>
                 </th>
                 <th pSortableColumn="country.name" style="min-width: 14rem">
                     <div class="flex justify-between items-center gap-2">
                         نقش
-                        <p-sortIcon field="country.name" />
-                        <p-columnFilter type="text" field="country.name" display="menu" class="ml-auto" />
+                        <p-sort-icon field="country.name" />
+                        <p-column-filter type="text" field="country.name" display="menu" class="ml-auto" />
                     </div>
                 </th>
                 <th pSortableColumn="representative.name" style="min-width: 14rem">
                     <div class="flex justify-between items-center gap-2">
                         تاریخ
-                        <p-sortIcon field="representative.name" />
-                        <p-columnFilter field="representative" matchMode="in" display="menu" [showMatchModes]="false" [showOperator]="false" [showAddButton]="false" class="ml-auto">
+                        <p-sort-icon field="representative.name" />
+                        <p-column-filter field="representative" matchMode="in" display="menu" [showMatchModes]="false" [showOperator]="false" [showAddButton]="false" class="ml-auto">
                             <ng-template #filter let-value let-filter="filterCallback">
                                 <p-multiselect [filter]="false" [ngModel]="representativeFilterValue" (ngModelChange)="representativeFilterValue = $event; filter($event)" [options]="representatives" placeholder="Any" (onChange)="filter($event.value)" optionLabel="name" class="w-full">
                                     <ng-template let-option #item>
@@ -62,7 +62,7 @@
                                     </ng-template>
                                 </p-multiselect>
                             </ng-template>
-                        </p-columnFilter>
+                        </p-column-filter>
                     </div>
                 </th>
 
@@ -72,8 +72,8 @@
                 <th pSortableColumn="status" style="min-width: 14rem">
                     <div class="flex justify-between items-center gap-2">
                         وضیعت
-                        <p-sortIcon field="status" />
-                        <p-columnFilter field="status" matchMode="equals" display="menu" class="ml-auto">
+                        <p-sort-icon field="status" />
+                        <p-column-filter field="status" matchMode="equals" display="menu" class="ml-auto">
                             <ng-template #filter let-value let-filter="filterCallback">
                                 <p-select [ngModel]="statusFilterValue" (ngModelChange)="statusFilterValue = $event; filter($event)" [options]="statuses" (onChange)="filter($event.value)" placeholder="Any">
                                     <ng-template let-option #item>
@@ -81,14 +81,14 @@
                                     </ng-template>
                                 </p-select>
                             </ng-template>
-                        </p-columnFilter>
+                        </p-column-filter>
                     </div>
                 </th>
                 <th pSortableColumn="activity" style="min-width: 14rem">
                     <div class="flex justify-between items-center gap-2">
                         فعالیت
-                        <p-sortIcon field="activity" />
-                        <p-columnFilter field="activity" matchMode="between" display="menu" [showMatchModes]="false" [showOperator]="false" [showAddButton]="false" class="ml-auto">
+                        <p-sort-icon field="activity" />
+                        <p-column-filter field="activity" matchMode="between" display="menu" [showMatchModes]="false" [showOperator]="false" [showAddButton]="false" class="ml-auto">
                             <ng-template #filter let-filter="filterCallback">
                                 <p-slider [(ngModel)]="activityValues" [range]="true" (onSlideEnd)="filter($event.values)" class="m-4"></p-slider>
                                 <div class="flex items-center justify-between px-2">
@@ -96,7 +96,7 @@
                                     <span>{{ activityValues[1] }}</span>
                                 </div>
                             </ng-template>
-                        </p-columnFilter>
+                        </p-column-filter>
                     </div>
                 </th>
                 <th style="width: 5rem"></th>
@@ -105,7 +105,7 @@
         <ng-template #body let-customer>
             <tr class="p-selectable-row">
                 <td>
-                    <p-tableCheckbox [value]="customer" />
+                    <p-table-checkbox [value]="customer" />
                 </td>
                 <td>
                     <div class="flex items-center gap-2">
@@ -129,7 +129,7 @@
                     <p-tag [value]="customer.status" [severity]="getSeverity(customer.status)" />
                 </td>
                 <td>
-                    <p-progressBar [value]="customer.activity" [showValue]="false" />
+                    <p-progress-bar [value]="customer.activity" [showValue]="false" />
                 </td>
                 <td style="text-align: center" dir="ltr">
                     <div class="card flex justify-center">

@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation, ChangeDetectionStrategy } from '@angular/core';
 import { CustomerService } from '../../../../core/services/data-chart/customer';
 import { MessageService } from 'primeng/api';
 import { TableModule, TableRowCollapseEvent, TableRowExpandEvent } from 'primeng/table';
@@ -30,6 +30,7 @@ import { InputGroupAddonModule } from 'primeng/inputgroupaddon';
   ],
   providers: [CustomerService, MessageService],
   templateUrl: './orders.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './orders.css',
 })
 export class Orders implements OnInit {

@@ -1,6 +1,6 @@
 
 import { isPlatformBrowser } from '@angular/common';
-import { ChangeDetectorRef, Component, effect, inject, OnInit, PLATFORM_ID, ViewEncapsulation } from '@angular/core';
+import { ChangeDetectorRef, Component, effect, inject, OnInit, PLATFORM_ID, ViewEncapsulation, ChangeDetectionStrategy } from '@angular/core';
 import { AppConfigService } from '../../../core/services/data-chart/appConfigService';
 import { ChartModule } from 'primeng/chart';
 import { DesignerService } from '../../../core/services/data-chart/designer';
@@ -9,6 +9,7 @@ import { DesignerService } from '../../../core/services/data-chart/designer';
   imports: [ChartModule],
   encapsulation:ViewEncapsulation.None,
   templateUrl: './product-chart.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './product-chart.css',
 })
 export class ProductChart implements OnInit {

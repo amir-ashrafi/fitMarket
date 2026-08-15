@@ -1,4 +1,4 @@
-import { Component, signal, ViewEncapsulation } from '@angular/core';
+import { Component, signal, ViewEncapsulation, ChangeDetectionStrategy } from '@angular/core';
 import { Blog } from '../../../../../type';
 import { BlogService } from '../../../../core/services/blog';
 import { DataView } from 'primeng/dataview';
@@ -24,6 +24,7 @@ import { PaginatorModule, PaginatorState } from 'primeng/paginator';
   encapsulation:ViewEncapsulation.None,
   standalone: true,
 
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './blogs.css',
 })
 export class Blogs {
@@ -46,19 +47,35 @@ export class Blogs {
     });
   }
 
-  getSeverity(blog: Blog): 'success' | 'info' | 'warn' | 'danger' | 'secondary' | 'contrast' | null{
+  getSeverity(
+    blog: Blog
+  ): 'success' | 'info' | 'warn' | 'danger' | 'secondary' | 'contrast' | null {
     if (blog.featured) {
-      return 'success'; 
+      return 'success';
     }
+  
     switch (blog.category) {
-      case 'Technology':
+      case 'Workout & Fitness':
         return 'info';
-      case 'Education':
-        return 'secondary';
-      case 'Sports':
+  
+      case 'Sports Nutrition':
+        return 'warn';
+  
+      case 'Sports Supplements':
         return 'danger';
-      case 'Lifestyle':
+  
+      case 'Sports Equipment':
+        return 'secondary';
+  
+      case 'Sports & Health':
+        return 'success';
+  
+      case 'Buying Guide':
         return 'contrast';
+  
+      case 'Sports News':
+        return 'info';
+  
       default:
         return 'secondary';
     }

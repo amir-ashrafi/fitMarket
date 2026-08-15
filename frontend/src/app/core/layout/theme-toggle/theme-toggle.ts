@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, ChangeDetectionStrategy } from '@angular/core';
 import { AsyncPipe } from '@angular/common';
 import { Store } from '@ngrx/store';
 import { toggleTheme, selectThemeMode } from '../store';
@@ -26,6 +26,7 @@ import { toggleTheme, selectThemeMode } from '../store';
       }
     </button>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   styles: [`
     :host {
       display: inline-flex;

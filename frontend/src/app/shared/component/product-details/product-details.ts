@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewEncapsulation, ChangeDetectionStrategy } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { ButtonModule } from 'primeng/button';
@@ -29,6 +29,7 @@ import { Paginator, PaginatorState } from "primeng/paginator";
 ],
   templateUrl: './product-details.html',
   styleUrl: './product-details.css',
+  changeDetection: ChangeDetectionStrategy.Eager,
   encapsulation:ViewEncapsulation.Emulated
 })
 export class ProductDetails implements OnInit, OnDestroy {

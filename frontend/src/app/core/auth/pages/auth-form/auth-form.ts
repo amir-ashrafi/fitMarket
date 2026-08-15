@@ -1,4 +1,4 @@
-import { Component, inject, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, inject, OnInit, ViewEncapsulation, ChangeDetectionStrategy } from '@angular/core';
 import { FormBuilder, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ButtonModule } from 'primeng/button';
 import { FloatLabelModule } from 'primeng/floatlabel';
@@ -15,6 +15,7 @@ import { take } from 'rxjs';
     FormsModule, SelectButtonModule, ButtonModule, ReactiveFormsModule, PasswordModule, FloatLabelModule],
   templateUrl: './auth-form.html',
   encapsulation:ViewEncapsulation.None,
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './auth-form.css',
 })
 export class AuthForm implements OnInit{

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { Items_Footer } from '../../../../../type';
 import { RouterLink } from '@angular/router';
 import {  ButtonModule } from "primeng/button";
@@ -14,6 +14,7 @@ import { InputTextModule } from 'primeng/inputtext';
     FloatLabelModule,
     FormsModule],
   templateUrl: './footer.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './footer.css',
 })
 export class Footer {

@@ -1,28 +1,28 @@
-<div dir="rtl" class="card  category max-w-[1200px] mx-auto ">
-    <h1 class="md:text-white text-indigo-700 border-2 md:bg-indigo-900 rounded-l-full px-5 md:mt-8 py-3 inline-block text-right font-bold">دسته بندی محصولات ورزشی</h1>
-     <p-carousel
-  [value]="category()"
-  [numVisible]="3"
-  [numScroll]="1"
-  [circular]="true"
-  [autoplayInterval]="3000"
-  [showIndicators]="false"
-  style="display: flex; width: 90%; margin: auto;"
-  [responsiveOptions]="responsiveOptions"
+<div dir="rtl" class="card category max-w-[1200px] lg:max-w-[1700px] mt-5 md:mt-0 mx-auto">
+    <h1 class="md:text-white text-white bg-gray-800 border-2  rounded-l-full px-5 md:mt-8 py-3 inline-block text-right font-bold">
+        دسته بندی محصولات ورزشی
+    </h1>
+
+    <p-carousel
+    [value]="category()"
+    [numVisible]="7"
+    [numScroll]="1"
+    [circular]="true"
+    [autoplayInterval]="3000"
+    [showIndicators]="false"
+    class="flex w-[90%] mx-auto"
+    [responsiveOptions]="responsiveOptions"
 >
         <ng-template let-categorys #item>
-              <a
-    class="block cursor-pointer"
-    [routerLink]="['/category', categorys.id]"
-  >
-            <div class=" dark:border-surface-700 rounded m-2 p-4">
-                <div class="mb-4 mx-auto bg-sky-100 border-4 hover:border-indigo-500 rounded-full size-32  flex flex-col justify-center">
-                    <div class="relative mx-auto">
-                        <img [src]="categorys.src" [alt]="categorys.name" class=" bg-contain rounded-border" />
+            <a class="block cursor-pointer" [routerLink]="['/category', categorys.id]">
+                <div class="dark:border-surface-700 rounded m-2 p-4">
+                    <div class="mb-4 mx-auto bg-gray-100 border-4 hover:border-indigo-500 rounded-full size-32 flex flex-col justify-center">
+                        <div class="relative mx-auto">
+                            <img [src]="categorys.src" [alt]="categorys.name" class="object-contain rounded-border" />
+                        </div>
                     </div>
+                    <div class="mb-4 text-black text-center font-medium">{{ categorys.name }}</div>
                 </div>
-                <div class="mb-4 text-black text-center font-medium">{{ categorys.name }}</div>
-            </div>
             </a>
         </ng-template>
     </p-carousel>

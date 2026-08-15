@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit, ViewChild, ViewEncapsulation, ChangeDetectionStrategy } from '@angular/core';
 import { ConfirmationService, MessageService } from 'primeng/api';
 import { Product } from '../../../../../type';
 import { ProductService } from '../../../../core/services/data-chart/products';
@@ -33,6 +33,7 @@ import { RouterLink } from "@angular/router";
     providers: [MessageService, ConfirmationService, ProductService],
   templateUrl: './products.html',
   encapsulation:ViewEncapsulation.None,
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './products.css',
 
 })

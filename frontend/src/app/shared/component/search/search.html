@@ -1,0 +1,48 @@
+<div class="px-2 py-3 search space-x-2 flex md:w-8/12 md:max-w-[500px] h-auto">
+    <div class="flex items-center md:hidden">
+        @if (showNotification) {
+            <button
+                type="button"
+                pButton
+                severity="secondary"
+                variant="text"
+                iconOnly
+                class="relative"
+                (click)="onNotificationClick()"
+            >
+                <svg class="text-black font-bold cursor-pointer" [size]="20" [pIcon]="icons[3]"></svg>
+
+                @if (notificationCount > 0) {
+                    <span
+                        class="absolute -top-1 -right-1 flex items-center justify-center min-w-[16px] h-4 px-1 text-[10px] font-bold text-white bg-red-500 rounded-full"
+                    >
+                        {{ notificationCount > 99 ? '99+' : notificationCount }}
+                    </span>
+                }
+            </button>
+        } @else {
+            <button
+                type="button"
+                pButton
+                severity="secondary"
+                variant="text"
+                iconOnly
+                (click)="onBackClick()"
+            >
+                <svg class="text-black font-bold cursor-pointer" [size]="20" [pIcon]="icons[1]"></svg>
+            </button>
+        }
+    </div>
+
+    <p-inputgroup>
+        <div class="flex items-center space-x-2 w-full">
+            <button type="button" pButton severity="secondary" variant="text" iconOnly>
+                <svg class="text-gray-500 font-bold cursor-pointer" [size]="20" [pIcon]="icons[0]"></svg>
+            </button>
+            <input pInputText placeholder="جستوجوی محصولات" />
+        </div>
+        <button type="button" pButton severity="secondary" variant="text" iconOnly>
+            <svg class="text-gray-500 font-bold cursor-pointer" [size]="20" [pIcon]="icons[2]"></svg>
+        </button>
+    </p-inputgroup>
+</div>

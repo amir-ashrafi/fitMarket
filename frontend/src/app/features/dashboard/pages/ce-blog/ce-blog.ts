@@ -1,4 +1,4 @@
-import { Component, inject, ViewEncapsulation } from '@angular/core';
+import { Component, inject, ViewEncapsulation, ChangeDetectionStrategy } from '@angular/core';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { EditorModule } from 'primeng/editor';
 import { ToastModule } from 'primeng/toast';
@@ -16,6 +16,7 @@ import { TagModule } from 'primeng/tag';
 providers: [MessageService],
 encapsulation:ViewEncapsulation.None,
   templateUrl: './ce-blog.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './ce-blog.css',
 })
 export class CeBlog {

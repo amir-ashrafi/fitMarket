@@ -1,0 +1,37 @@
+<div class="flex bg-gray-800 pb-10 py-3    w-full flex-col  md:rounded-t-2xl" dir="rtl">
+    <div class="flex px-5 pt-3 md:hidden items-center justify-between flex-row w-full pb-2">
+        <div class="mr-10">
+            <h1 class="font-playful text-3xl text-center w-full inline-block  font-bold ">تازه ترین ها</h1>
+        </div>
+           <button pButton routerLink="/products" class="flex items-center justify-center cursor-pointer w-16 h-16 py-1"> 
+                <span class="">
+                همه
+                </span>
+                <svg class="text-white" size="30" data-p-icon="angle-left"></svg>
+            </button> 
+            
+    </div>
+    <div class="flex flex-col justify-center items-center">
+        <div class=" justify-start flex-col  px-5 md:flex hidden">
+            <div class="flex flex-col px-5 py-2 mt-8 mb-3 pt-4 items-center ">
+                <h1 class="font-playful text-4xl inline-block text-right font-bold">تازه ترین ها</h1>
+            </div>
+        </div>
+        <div
+        class="flex gap-3 md:py-3 w-auto overflow-x-auto overflow-hidden custom-scroll md:grid md:grid-cols-2 md:place-content-center md:place-self-center lg:grid-cols-3 xl:grid-cols-4"
+      >
+        @for (blog of newBlog.slice(-4); track blog.id) {
+            <app-card-blogs [blog]="blog" />
+        }
+    </div>
+    <button pButton routerLink="/blogs" class="rounded-lg w-28 hidden md:flex flex-col  justify-center bg-white cursor-pointer py-1 items-center"> 
+        <span class="text-gray-800">
+             مشاهده همه
+        </span>
+        <svg class="text-gray-900" size="30" data-p-icon="chevron-down"></svg>
+    </button>
+
+    </div>
+      
+</div>
+

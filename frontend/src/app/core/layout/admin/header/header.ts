@@ -1,5 +1,5 @@
 import { ToggleSwitchModule } from 'primeng/toggleswitch';
-import { Component, inject, input, ViewEncapsulation, WritableSignal } from '@angular/core';
+import { Component, inject, input, ViewEncapsulation, WritableSignal, ChangeDetectionStrategy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ButtonModule } from 'primeng/button';
 import { SpeedDialModule } from 'primeng/speeddial';
@@ -17,6 +17,7 @@ import { ThemeToggleComponent } from '../../theme-toggle/theme-toggle';
   imports: [CommonModule,AvatarGroupModule,AvatarModule,SpeedDialModule, ToggleSwitchModule,ButtonModule, ToastModule,ThemeToggleComponent],
   templateUrl: './header.html',
   providers: [MessageService],
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrls: ['./header.css'],
 })
 export class Header {
