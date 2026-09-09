@@ -13,6 +13,7 @@ export interface MenuItems{
     items:MenuItem[]
 }
 // ===>HomeItem
+
 export interface CardItem{
     id:number,
     name:string,
@@ -24,29 +25,44 @@ export interface CardItem{
     title:string,
 }
 export interface Customer {
-    id?: string;
-    fullName?: string;
-    purchaseDate?:string;
-    phone?: string;
-    email?: string;
-    avatar?: string;
-    status?:string;
-    totalAmount:number;
-    orders?:Order[]
+  id?: string;
+  fullName?: string;
+  purchaseDate?: string;
+  phone?: string;
+  email?: string;
+  avatar?: string;
+  status?: string;
+  totalAmount: number;
+  orders?: Order[]
+}
+
+export interface Order {
+  id?: string;
+  productName?: string;
+  productImage?: string;
+  price?: number;
+  quantity?: number;
+  category?: string;
+  color?: string;
+  size?: string;
+  weight?: string;
+  flavor?: string;
 }
 
 export interface Representative {
   name: string;
   image: string;
 }
-export interface Order{
-  id?:string;
-  productName?:string;
-  productImage?:string;
-  price?:number;
-  quantity?:number;
-  category?:string;
+export interface OrderItem {
+  id: string;
+  productName: string;
+  productImage: string;
+  price: number;
+  quantity: number;
+  category: string;
 }
+
+
 export interface Column {
     field: string;
     header: string;
@@ -58,19 +74,19 @@ export interface ExportColumn {
     dataKey: string;
 }
 export interface Product {
-  id?: string;
+  id: string;
   code?: string;
-  name?: string;
+  name: string;
   description?: string;
-  price?: number;
-  quantity?: number;
+  price: number;
+  quantity: number;
   inventoryStatus?: string;
   category?: string;
   image?: string;
   rating?: number;
   discountPercent?: number;
   discountExpiresAt?: string | Date;
-  color?: ProductColor[];
+  color?: ProductColor[] |undefined;
   sizes?: Size_p[];
   weights?: Weights_p[];
   flavors?: Flavors_p[];
@@ -185,3 +201,26 @@ export interface CATEGORY{
   link:string
 }
 //home ==> shope
+export interface CartItem {
+  id: string;
+  productId: string;
+  name?: string;
+  image?: string;
+  quantity: number;
+  price: number;
+  selectedColor?: string;
+  selectedSize?: string;
+  selectedWeight?: string;
+  selectedFlavor?: string;
+}
+export interface DiscountCountdown{
+  days:number;
+  hours:number;
+  minutes:number;
+  seconds:number;
+}
+export interface DiscountInfo{
+  isActive:boolean;
+  discountPrise:number|null;
+  countdown:DiscountCountdown|null;
+}

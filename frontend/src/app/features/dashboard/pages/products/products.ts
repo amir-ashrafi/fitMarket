@@ -43,8 +43,7 @@ productDialog: boolean = false;
 
     products!: Product[];
 
-    product!: Product;
-
+    product: Product | null = null;
     selectedProducts!: Product[] | null;
 
     submitted: boolean = false;
@@ -154,7 +153,7 @@ productDialog: boolean = false;
             },
             accept: () => {
                 this.products = this.products.filter((val) => val.id !== product.id);
-                this.product = {};
+                this.product = null;
                 this.messageService.add({
                     severity: 'success',
                     summary: 'Successful',

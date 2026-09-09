@@ -1,0 +1,42 @@
+.cart-table tr th{
+padding: 25px 0ch;
+}
+.button-tr-b .button_trash{
+background: var(--color-red-100);
+color: var(--color-red-600);
+border: solid 2px var(--color-red-300);
+margin: 20px ;
+padding: 10px 16px;
+font-weight: 500;
+}
+.button-tr-b .button_trash:hover{
+    background: var(--color-red-500);
+    color: var(--color-white);
+    font-weight: 800;
+
+ }
+ .button-tr-b .button_edit{
+    background: var(--color-indigo-100);
+    padding: 10px 16px;
+    color: var(--color-indigo-600);
+    border: solid 2px var(--color-indigo-300);
+    margin: 20px ;
+    font-weight: 500;
+    }
+    .button-tr-b .button_edit:hover{
+        background: var(--color-indigo-500);
+        color: var(--color-white);
+        font-weight: 800;
+    
+     }
+     ::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+  }
+  
+  /* Thumb */
+  ::-webkit-scrollbar-thumb {
+      background: var(--color-indigo-500);
+      border-radius: 10px;
+  }
+  

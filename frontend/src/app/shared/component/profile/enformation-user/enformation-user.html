@@ -1,0 +1,42 @@
+<div class="bg-white border-2 border-gray-300 rounded-xl p-6 flex flex-col gap-4">
+    <span class="text-xl font-medium text-black">اطلاعات حساب</span>
+
+    @if (currentUser$ | async; as user) {
+        <div class="flex items-center gap-4">
+            <div class="w-16 h-16 rounded-full bg-indigo-100 text-indigo-600 flex items-center justify-center text-2xl font-bold shadow-md">
+                {{ (user.name ?? user.email)[0] }}
+            </div>
+            <div class="flex flex-col gap-1">
+                <span class="font-semibold text-lg">{{ user.name ?? 'کاربر' }}</span>
+                <span class="text-sm text-gray-500">{{ user.email }}</span>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-2 gap-4 pt-4 border-t border-gray-200">
+            <div class="flex flex-col gap-1">
+                <span class="text-xs text-gray-400">نقش کاربری</span>
+                <span class="text-sm font-medium">{{ getRoleLabel(user.role) }}</span>
+            </div>
+            @if (user.company) {
+                <div class="flex flex-col gap-1">
+                    <span class="text-xs text-gray-400">شرکت</span>
+                    <span class="text-sm font-medium">{{ user.company }}</span>
+                </div>
+            }
+            @if (user.country) {
+                <div class="flex flex-col gap-1">
+                    <span class="text-xs text-gray-400">کشور</span>
+                    <span class="text-sm font-medium">{{ user.country.name }}</span>
+                </div>
+            }
+            @if (user.status) {
+                <div class="flex flex-col gap-1">
+                    <span class="text-xs text-gray-400">وضعیت</span>
+                    <span class="text-sm font-medium">{{ getStatusLabel(user.status) }}</span>
+                </div>
+            }
+        </div>
+    } @else {
+        <span class="text-sm text-gray-500">برای مشاهده‌ی اطلاعات حساب، وارد شوید.</span>
+    }
+</div>

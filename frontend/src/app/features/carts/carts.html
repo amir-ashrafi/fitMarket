@@ -1,0 +1,45 @@
+<div class=" px-10 pb-14">
+    <div class="flex justify-end space-x-3 items-center mt-5">
+        <div class="flex flex-col  justify-start items-end gap-1 ">
+            <span class="text-black text-2xl">سبد خرید</span>
+            @if(cartService.isEmpty()){
+                <span class="text-gray-700 text-xs">سبد خرید شما خالی است</span>
+            }@else {
+                <h2 class="text-gray-700 text-xs">محصول در سبد خرید شما موجود می باشد({{ cartService.totalItemsCount() }})</h2>
+            }
+        </div>
+        <svg data-p-icon="shopping-cart" class="text-indigo-600 bg-indigo-100 rounded-full p-3" [size]="55"></svg>
+    </div>
+    <div class="flex flex-col w-full lg:flex-row pt-10 lg:space-x-5 space-y-4 md:justify-center  lg:items-start ">
+        <app-table-cart ngSkipHydration class="basis-1 lg:basis-1"/>
+        <div class="w-full basis-1 justify-center sm:flex-row lg:flex-col space-y-3 sm:space-x-1 flex-col lg:min-w-[400px] lg:basis-1/4 flex">
+            <app-payment class="" />
+            <div class=" flex flex-col px-4 py-3 max-h-[170px] sm:max-h-[140px] lg:max-h-[180px] justify-center bg-white border-2 items-end rounded-xl border-gray-300 text-gray-700">
+                <div class="flex items-center space-x-2 pt-2">
+                    <div class="flex flex-col text-right">
+                        <h1 class="text-xl font-medium">کد تخفیف دارید؟</h1>
+                        <span class="text-gray-500 sm:hidden lg:block">برای استفاده از کد تخفیف ان را در کادر مقابل اعمال کنید</span>
+                    </div>  
+                  <div class="relative text-indigo-600">
+                    <svg data-p-icon="ticket" size="48"></svg>
+                    <svg data-p-icon="percentage" size="20" class="absolute top-3.5 left-3.5"></svg>
+                </div>
+                </div>
+                    <div class="flex justify-center w-full pt-3 sm:pt-3  space-x-2">
+                        <p-iconfield >
+                            <input pInputText class="input-dis" [(ngModel)]="value" class="w-56" placeholder="Type something" />
+                            @if (value) {
+                                <p-inputicon (click)="value = ''" style="cursor: pointer">
+                                    <svg data-p-icon="times"></svg>
+                                </p-inputicon>
+                            }
+                        </p-iconfield>
+                        <button pButton class="button_dis">
+                            اعمال تخفیف
+                        </button>
+                    </div>
+
+                </div>
+        </div> 
+    </div>    
+</div>

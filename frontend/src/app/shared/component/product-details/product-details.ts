@@ -9,23 +9,39 @@ import { Subscription } from 'rxjs';
 import { Product, ProductReview } from '../../../../type';
 import { MOCK_PRODUCTS } from '../../data/mock-products';
 import { CardProducts } from '../card-products/card-products';
-import { SelectButton } from "primeng/selectbutton";
 import { Dialog } from "primeng/dialog";
 import { Paginator, PaginatorState } from "primeng/paginator";
+import { WindowMaximize } from '@primeicons/angular/window-maximize';
+import { Eye } from '@primeicons/angular/eye';
+import { HeartFill } from '@primeicons/angular/heart-fill';
+import { Heart } from '@primeicons/angular/heart';
+import { AngleRight } from '@primeicons/angular/angle-right';
+import { AngleLeft } from '@primeicons/angular/angle-left';
+import { inject } from '@angular/core';
+import { Router } from '@angular/router';
+import { MessageService } from 'primeng/api';
+import { Toast } from 'primeng/toast';
+import { CartService } from '../../../core/services/cart-service';
+import { DiscountService } from '../../../core/services/discount-service';
+import { DiscountInfo } from '../../../../type';
+import { CheckCircle } from '@primeicons/angular/check-circle';
 
 @Component({
   selector: 'app-product-details',
   standalone: true,
+  providers: [MessageService],
   imports: [
     CommonModule,
+    Toast,
     RouterLink,
     FormsModule,
     ButtonModule,
     CardProducts,
-    Rating,
+    Rating,CheckCircle,
+    ButtonModule,
     TextareaModule,
     Dialog,
-    Paginator
+    Paginator,WindowMaximize,Eye,HeartFill,Heart,AngleRight,AngleLeft
 ],
   templateUrl: './product-details.html',
   styleUrl: './product-details.css',
@@ -36,6 +52,10 @@ export class ProductDetails implements OnInit, OnDestroy {
   product: Product | undefined;
   recommendedProducts: Product[] = [];
   value_r = 3;
+  private readonly router = inject(Router)
+  private readonly cartService = inject(CartService);
+  private readonly messageService = inject(MessageService);
+  private readonly discountService = inject(DiscountService);
   private routeSub?: Subscription;
   first: number = 0;
   rows: number = 10;
@@ -53,6 +73,7 @@ export class ProductDetails implements OnInit, OnDestroy {
   selectedWeight = '';
   hoverColor = '';
   selectedSize?: string;
+  discountInfo: DiscountInfo | null = null;
 
   selectedFlavor = '';
   isFavorite = false;
@@ -188,8 +209,54 @@ export class ProductDetails implements OnInit, OnDestroy {
     this.isFavorite = !this.isFavorite;
   }
 
-  addToCart() {
-    // later: connect to cart service
+  onAddToCart(): void {
+    if (!this.product) return;
+  
+    const missing: string[] = [];
+  
+    if (this.product.color?.length && !this.selectedColor) {
+      missing.push('رنگ');
+    }
+    if (this.showSizes && this.availableSizes.length && !this.selectedSize) {
+      missing.push(this.sizeLabel);
+    }
+    if (this.showWeights && !this.selectedWeight) {
+      missing.push('وزن');
+    }
+    if (this.showFlavors && !this.selectedFlavor) {
+      missing.push('طعم');
+    }
+  
+    if (missing.length > 0) {
+      this.messageService.add({
+        key: 'validation-toast',
+        severity: 'warn',
+        summary: 'هشدار',
+        detail: `لطفاً ${missing.join('، ')} را انتخاب کنید`,
+        life: 3500,
+      });
+      return;
+    }
+  
+    this.cartService.addToCart(this.product, 1, {
+      color: this.selectedColor,
+      size: this.selectedSize,
+      weight: this.selectedWeight || undefined,
+      flavor: this.selectedFlavor || undefined,
+    });
+  
+    this.messageService.add({
+      key: 'cart-toast',
+      severity: 'success',
+      summary: 'موفق',
+      detail: `${this.product.name} به سبد خرید اضافه شد`,
+      life: 4000,
+    });
+  }
+  
+  goToCart(): void {
+    this.messageService.clear('cart-toast');
+    this.router.navigate(['/cart']);
   }
   showReviewDialog = false;
 
@@ -221,6 +288,7 @@ export class ProductDetails implements OnInit, OnDestroy {
     this.routeSub = this.route.paramMap.subscribe((params) => {
       const productId = params.get('id');
       this.product = MOCK_PRODUCTS.find((item) => item.id === productId);
+      this.discountInfo = this.product ? this.discountService.getDiscountInfo(this.product) : null;
       this.value_r = this.product?.rating ?? 3;
       this.selectedColor = undefined;
       this.selectedSize = undefined;

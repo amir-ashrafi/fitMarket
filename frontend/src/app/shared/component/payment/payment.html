@@ -1,0 +1,42 @@
+<div class="bg-white text-black mt-5 md:mt-0 border-2 border-gray-300 rounded-xl md:rounded-2xl py-7 px-8 flex flex-col gap-3 w-full lg:max-w-[400px]">
+    <h1 class=" text-right font-bold text-xl lg:text-lg">خلاصه سفارش ها</h1>
+    <div class="flex flex-col pb-6 gap-5">
+        <div class="flex text-gray-500 justify-between">
+            <div class="flex space-x-1 items-center">
+                <span class="text-sm">تومان</span>
+                <span class="font-medium text-xl lg:text-lg">{{cartService.totalPrice().toLocaleString('fa-IR')}}</span>
+            </div>
+            <h1 class="lg:text-sm">مجموع قیمت محصولات</h1>
+        </div>
+        <div class="flex text-gray-500 justify-between">
+            <div class="flex space-x-1 items-center">
+                <span class="text-sm">تومان</span>
+                <span class="font-medium text-xl lg:text-lg">{{(200000).toLocaleString('fa-IR') }}</span>
+            </div>
+            <h1 class="lg:text-sm">هزینه ارسال</h1>
+        </div>
+    </div>
+    <div class="flex justify-between border-t-2 pt-6 border-gray-300">
+        <div class="text-indigo-500 items-center font-medium space-x-2 flex text-2xl">
+            <span class="text-lg">تومان</span>
+            <span class=" ">{{(cartService.totalPrice() + 200000).toLocaleString('fa-IR')}}</span>
+        </div>
+        <h1 class="text-xl font-medium">جمع کل</h1>
+    </div> 
+    <div class="bg-indigo-50 my-4 border-2 py-3 rounded-xl items-center space-x-2  border-gray-300 text-indigo-500 lg:text-sm  text-sm text-right min-w-[200px] font-medium  flex justify-center">
+        <span>با خرید این محصول ۱۲۳ امتیاز دریافت کنید</span>
+        <svg data-p-icon="crown" size="20"></svg>
+    </div>
+
+<button pButton class="button-order mb-4" (click)="onCheckout()" [disabled]="cartService.isEmpty()">
+    <svg data-p-icon="chevron-left" class="text-left translate-x-3" size="20"></svg>
+    <span class="text-center w-full">ادامه فرایند خرید</span>
+</button>
+    <div class="flex text-xs sm:text-sm lg:text-xs text-right  justify-center text-gray-500 space-x-2">
+        <div>
+            <span>.</span>
+            <span>اطلعات شما در این سایت امن و رمز گذاری شده است</span>
+        </div>
+        <svg data-p-icon="lock"></svg>
+    </div>
+</div>
