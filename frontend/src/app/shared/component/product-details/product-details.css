@@ -218,23 +218,19 @@
   padding-bottom: 0.5rem;
 }
 
-:host ::ng-deep .button_icon .p-button {
+.button_icon{
   background:  var(--color-slate-200);;
+  color: var(--color-indigo-600);
+  border: 2px solid var(--color-slate-100);
+}
+
+
+.button_icon.p-button:hover {
+  background: var(--color-indigo-500);
   color: white;
-  border: 3px solid var(--color-slate-100);
+  border-color:2px solid var(--color-indigo-500);
 }
 
-:host ::ng-deep .button_icon .p-button .pi {
-  color: var(--color-slate-800);
-}
-
-:host ::ng-deep .button_icon .p-button:hover {
-  background: var(--color-indigo-300);
-  border-color: var(--color-indigo-500);
-}
-:host ::ng-deep .button_icon .pi-heart-fill {
-  color: var(--color-indigo-600) !important;
-}
 :host ::ng-deep .cart-button-order-main {
   background: var(--color-indigo-500);
   border-color: var(--color-indigo-300);

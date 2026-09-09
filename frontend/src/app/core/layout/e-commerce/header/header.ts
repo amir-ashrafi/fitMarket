@@ -27,7 +27,7 @@ export class Header {
     {
       name:'سبد خرید',
      icon:'shopping-cart',
-     link:'/buying'
+     link:'/cart'
     },
     {
       name:'وبلاگ',
@@ -37,7 +37,7 @@ export class Header {
     {
       name:'مارکت من',
      icon:'user',
-     link:'/auth/login'
+     link:'/profile'
     },
   ]
   icons = ['home', 'star', 'heart', 'bell'];

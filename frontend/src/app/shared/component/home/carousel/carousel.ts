@@ -1,5 +1,4 @@
 import { Component, OnInit,model} from '@angular/core';
-import { PhotoService } from '../../../../core/services/home/photoservice';
 import { CarouselModule } from 'primeng/carousel';
 import { ChevronLeft } from '@primeicons/angular/chevron-left';
 import { ChevronRight } from '@primeicons/angular/chevron-right';
@@ -10,9 +9,7 @@ interface CarouselSlide {
 @Component({
   selector: 'app-carousel',
   imports:  [CarouselModule, ChevronLeft, ChevronRight],
-  providers: [PhotoService],
   templateUrl: './carousel.html',
-
   styleUrl: './carousel.css',
 })
 export class CarouselWeb{

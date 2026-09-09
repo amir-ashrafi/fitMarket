@@ -1,0 +1,27 @@
+<div >
+    <div class="bg-linear-to-t from-indigo-800 to-indigo-500  md:hidden rounded-br-[80px] px-5 pb-14 pt-6">
+        <div class="flex justify-between items-center">
+            <button pButton>
+                <svg size="30" data-p-icon="bell"></svg>
+            </button>
+            <span class="text-lg font-bold">پروفایل</span>
+            <button pButton>
+                <svg size="30" data-p-icon="heart"></svg>
+            </button>
+        </div>
+        <app-title/>
+    </div>
+    <div class="mx-5 -translate-y-7 md:translate-0 md:flex ">
+     <app-card-profile class="md:hidden"/>
+
+    <app-links-profile class="md:basis-1/4"/>   
+    <div class="hidden md:flex flex-col md:basis-3/4 md:my-5 md:ml-5 gap-4">
+        <app-title/>
+        <app-card-profile class="md:flex hidden justify-center"/>
+        <div class="flex flex-col xl:flex-row">
+            <app-orders-user class="xl:basis-1/2 bg-blue-500 "/>
+            <app-enformation-user class="xl:basis-1/2 bg-amber-500"/>
+        </div>
+    </div>
+    </div>
+</div>

@@ -1,0 +1,16 @@
+.button-order{
+    background-color: var(--color-indigo-600);
+    border: white solid 2px;
+    padding: 13px 5px;
+    color: white;
+    font-size: 18px;
+    display: flex;
+    border-radius: 13px;
+    justify-content: space-between;
+}
+.button-order:hover{
+    background-color: var(--color-indigo-700);
+    color: white;
+    border: white solid 2px;
+
+}

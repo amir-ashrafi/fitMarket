@@ -1,0 +1,35 @@
+<div class=" flex flex-col gap-4 my-3">
+    <div class="flex flex-col ">
+        <span class="text-indigo-500 font-bold text-sm py-2 text-right">حساب کاربری</span>
+        <div class="flex flex-col rounded-xl border-2 px-2 py-1 shadow-lg bg-white">
+            @for (item of profile_link; track $index) {
+                <button class="button" pButton [routerLink]="item.link">
+                    <svg size="20" class="text-gray-500" data-p-icon="angle-left"></svg>  
+                    <div class="flex items-center space-x-2">
+                        <span>{{item.name}}</span>
+                      <svg size="25" class="text-indigo-600" [pIcon]="item.icon"></svg>  
+                    </div>
+                </button>
+            }
+        </div>
+
+    </div>
+    <div class="text-indigo-500 flex-col px-4 py-3.5 flex bg-white border-2 border-gray-200 shadow-lg rounded-xl w-full">
+        <span class="font-bold text-right">پشتیبانی و کمک</span>
+        <div class="flex md:flex-col md:space-y-4 space-x-4 pt-5">
+            @for (item of helpCart; track $index) {
+                <div class="flex items-center justify-between w-full  bg-indigo-50 p-4 rounded-xl border-2 border-gray-200 shadow-lg">
+                    <svg size="40" [pIcon]="item.icon"></svg>
+                    <div class="flex flex-col items-center space-y-2">
+                        <span class="text-gray-800 text-sm">{{item.title}}</span>
+                        <span class="text-gray-500 text-sm">{{item.text}}</span>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+    <button pButton class="button_exit">
+        <span>خروج از حساب کاربری</span>
+        <svg size="20" pIcon="sign-out"></svg>
+    </button>
+</div>

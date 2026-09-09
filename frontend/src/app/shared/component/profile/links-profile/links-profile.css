@@ -1,0 +1,35 @@
+.button{
+    display: flex;
+    width: 100%;
+    background: white;
+    padding: 10px;
+    justify-content: space-between;
+    
+    border: white 2px solid;
+    border-bottom: var(--color-gray-300) solid 2px;
+    margin: 3px 0px;
+}
+.button:last-child{
+border: white 2px solid;
+}
+.button:hover{
+background-color: var(--color-gray-100);
+border: white 2px solid;
+border-radius: 20px;
+}
+.button_exit{
+ color: var(--color-red-500);
+ background: var(--color-white);
+ border: white 2px solid;
+ box-shadow: 2px 2px 10px var(--color-gray-100);
+ padding: 13px 20px;
+ font-weight: bold;
+ border-radius: 15px;
+}
+.button_exit:hover{
+    color: var(--color-red-500);
+    background: var(--color-white);
+    border: var(--color-red-100) 2px solid;
+    box-shadow: 2px 2px 10px var(--color-red-200);
+
+   }

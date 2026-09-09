@@ -8,6 +8,10 @@ import { Register } from './core/auth/pages/register/register';
 import { AuthForm } from './core/auth/pages/auth-form/auth-form';
 import { Products } from './features/products/products';
 import { ProductDetails } from './shared/component/product-details/product-details';
+import { Blogs } from './features/blogs/blogs';
+import { Wishlist } from './features/wishlist/wishlist';
+import { Carts } from './features/carts/carts';
+import { Profile } from './features/profile/profile';
 
 
 export const routes: Routes = [
@@ -24,9 +28,25 @@ export const routes: Routes = [
             component:Products,
             },
             {
-            path:'products/:id',
+            path:'product-detail/:id',
             component:ProductDetails,
             },
+            {
+                path:'blogs',
+                component:Blogs,
+            },
+            {
+                path:'wishlist',
+                component:Wishlist,
+            },
+            {
+                path:'cart',
+                component:Carts
+            },
+            {
+                path:'profile',
+                component:Profile
+            }
 
         ]
     }

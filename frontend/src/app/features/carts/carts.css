@@ -1,0 +1,43 @@
+.p-iconfield{
+    background-color: rgba(0, 0, 0, 0);
+    border-radius: 10px;
+    color: black;
+}
+.p-iconfield .p-inputtext{
+    background-color: white;
+    color: black;
+    font-size: medium;
+    height: 45px;
+    border: var(--color-gray-300) 2px solid;
+    border-radius: 10px;
+    width: 10rem;
+}
+.button_dis{
+    background-color: var(--color-indigo-500);
+    color: white;
+    border: var(--color-indigo-500) 3px solid;
+    border-radius: 10px;
+    padding: 9px 17px;
+    font-weight: 500;
+    cursor: pointer;
+    transition-duration: 300ms;
+}
+.button_dis:hover{
+    background-color: var(--color-indigo-700);
+    color: white;
+    
+}
+@media (min-width: 640px) and (max-width: 1023px) {
+    .button_dis {
+        padding: 10px 12px;
+        font-size: 12px;
+    }
+}
+
+/* lg به بالا */
+@media (min-width: 1024px) {
+    .button_dis {
+        padding: 9px 17px;
+                font-size: 14px;
+    }
+}

@@ -4,63 +4,101 @@
     <div class="details-card grid-cols-12   w-full place-items-center lg:place-items-stretch">
       <div class=" bg-white  md:grid md:place-self-start min-w-[280px] max-w-[500px] gap-0 ">
         <div class=" bg-white rounded-2xl flex  border overflow-hidden">
-
-          <img
+          <div class="bg-indigo-100 border-2  border-indigo-500 rounded-xl h-[380px] w-full">
+                      <img
             [src]="product.image || 'assets/default-product.png'"
             [alt]="product.name"
-            class="h-[300px] w-9/12 bg-gray-100 rounded-xl  object-cover"
+            class="h-[290px] w-full  bg-indigo-100 rounded-xl  object-cover"
           />
+          <div dir="ltr" class="flex gap-3 mt-4  sm:mt-0 w-full scrollbar-thumb-indigo-100 overflow-x-auto justify-center lg:overflow-x-hidden  -translate-y-3 sm:-translate-2 md:translate-0  overflow-y-hidden whitespace-nowrap pb-2">
+            @for (item of example_product; track item.id) {
+              <div
+                class="flex-shrink-0 w-14 h-14 md:w-16 md:w-16 rounded-xl  overflow-hidden border cursor-pointer transition hover:scale-105"
+              >
+                <img
+                  [src]="item.src"
+                  class="w-ful h-full object-cover"
+                  alt=""
+                />
+              </div>
+            }
+          </div>
           <div class="w-2/12 flex flex-col justify-between py-3">
             <div class="flex flex-col items-center space-y-3">
-              <p-button
-                [icon]="isFavorite ? 'pi pi-window-maximize' : 'pi pi-eye'"
-                [outlined]="true"
-                class="button_icon"
-                styleClass="w-full"
-                (onClick)="toggleFavorite()"
-              />
-              <p-button
-                [icon]="isFavorite ? 'pi pi-heart-fill' : 'pi pi-heart'"
-                [outlined]="true"
-                class="button_icon"
-                styleClass="w-full"
-                (onClick)="toggleFavorite()"
-              />
-            </div>
-            <div class="flex flex-col items-center space-y-3">
-              <p-button
-              icon="pi pi-angle-right"
+              <button
+              pButton
+              iconOnly
               [outlined]="true"
-              class="button_icon"
-              styleClass="button_icon"
-              (onClick)="toggleFavorite()"
-            />
+              class="button_icon text-indigo-600 hover:text-white"
+              aria-label="View product"
+              (click)="toggleFavorite()"
+            >
+              @if (isFavorite) {
+                <svg
+                  data-p-icon="window-maximize"
+                  class="text-current"
+[size]="20"                ></svg>
+              } @else {
+                <svg
+                [size]="20"
+                  data-p-icon="eye"
+                  class="text-current"
+                ></svg>
+              }
+            </button>
+
+  <button
+    pButton
+    iconOnly
+    [outlined]="true"
+    class="button_icon hover:text-white"
+    aria-label="Favorite"
+    (click)="toggleFavorite()"
+  >
+    @if(isFavorite){
+      <svg
+      class="text-current"
+      data-p-icon="heart-fill"
+      [size]="20"
+    ></svg>
+    }@else {
+      <svg
+      class="text-current"
+      [size]="20"
+        data-p-icon="heart"
+      ></svg>
+    }
+  </button>
+</div>
+
+<div class="flex flex-col items-center space-y-3">
+  <button
+    pButton
+    iconOnly
+    [outlined]="true"
+    class="button_icon hover:text-white"
+    aria-label="Next"
+    (click)="toggleFavorite()"
+  >
+    <svg class="text-current" [size]="20" data-p-icon="angle-right"></svg>
+  </button>
+
+  <button
+    pButton
+    iconOnly
+    [outlined]="true"
+    class="button_icon hover:text-white"
+    aria-label="Previous"
+    (click)="toggleFavorite()"
+  >
+    <svg class="text-current" [size]="20" data-p-icon="angle-left"></svg>
+  </button>
+</div>
             
-              <p-button
-              icon="pi pi-angle-left"
-              [outlined]="true"
-              class="button_icon"
-              styleClass="button_icon"
-              (onClick)="toggleFavorite()"
-            />
-            </div>
-            
+          </div>
           </div>
         </div>
 
-        <div dir="ltr" class="flex gap-3 mt-4 sm:mt-0 w-full scrollbar-thumb-indigo-100 overflow-x-auto justify-end lg:overflow-x-hidden   overflow-y-hidden whitespace-nowrap pb-2">
-          @for (item of example_product; track item.id) {
-            <div
-              class="flex-shrink-0 w-16 h-20 rounded-xl  overflow-hidden border cursor-pointer transition hover:scale-105"
-            >
-              <img
-                [src]="item.src"
-                class="w-ful h-full object-cover"
-                alt=""
-              />
-            </div>
-          }
-        </div>
         <div class="w-full flex hidden lg:block justify-center">
           <div class="w-[300px] scrollbar-thumb-indigo-50 overflow-x-auto">
             <div class="flex gap-4 w-max">
@@ -221,7 +259,7 @@
               duration-200
               hover:scale-[1.02]
             "
-            (onClick)="addToCart()"
+            (onClick)="onAddToCart()"
           />
         </div>
           <div class="w-full flex justify-center lg:hidden">
@@ -403,5 +441,46 @@
           <a routerLink="/products" class="back-link">بازگشت به لیست محصولات</a>
         </div>
       }
-  
+      <p-toast
+      position="bottom-center"
+      key="cart-toast"
+    >
+      <ng-template  #message let-message>
+    
+        <div class="flex bg-gray-900/5 text-white flex-col gap-3 w-full">
+    
+          <div class=" flex items-center gap-2">
+            <svg
+              data-p-icon="check-circle"
+              [size]="20"
+            ></svg>
+    
+            <span>{{ message.detail }}</span>
+          </div>
+    
+          <button
+            type="button"
+            pButton
+            size="small"
+            class="w-full"
+            (click)="goToCart()"
+          >
+            مشاهده سبد خرید
+          </button>
+    
+        </div>
+    
+      </ng-template>
+    </p-toast>
+    <p-toast
+  position="top-center"
+  key="validation-toast"
+>
+  <ng-template #message let-message>
+    <div class="flex items-center gap-2 w-full">
+      <i class="pi pi-exclamation-triangle text-white"></i>
+      <span>{{ message.detail }}</span>
+    </div>
+  </ng-template>
+</p-toast>
 </section>

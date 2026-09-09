@@ -1,0 +1,27 @@
+<div dir="rtl">
+    <div dir="ltr" class="flex justify-end space-x-3 items-center mt-5">
+        <div class="flex flex-col  justify-start items-end gap-1 ">
+            <span class="text-black text-2xl">سبد خرید</span>
+            @if(!isLiked){
+                <span class="text-gray-700 text-xs">سبد خرید شما خالی است</span>
+            }@else {
+                <h2 class="text-gray-700 text-xs">محصول در سبد خرید شما موجود می باشد({{ likedCount() }})</h2>
+            }
+        </div>
+        <svg data-p-icon="heart" class="text-indigo-600 bg-indigo-100 rounded-full p-3" [size]="55"></svg>
+    </div>
+    <div>
+        <h1>
+            دسته بندی ها
+        </h1>
+        
+    </div>
+    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 place-self-center">
+        @for (p of likedProducts(); track p.id) {
+          <app-card-products [product]="p" />
+        } @empty {
+          <p>هنوز محصولی لایک نکردی.</p>
+        }
+
+    </div>  
+</div>

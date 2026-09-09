@@ -1,0 +1,62 @@
+<p-table dir="rtl" [value]="orders()" dataKey="id" [tableStyle]="{ 'min-width': '50rem' }">
+    <ng-template #header>
+        <tr>
+            <th style="width: 3rem"></th>
+            <th>تعداد محصول</th>
+            <th>تاریخ خرید</th>
+            <th>مبلغ کل</th>
+            <th>وضعیت</th>
+        </tr>
+    </ng-template>
+    <ng-template #body let-order let-expanded="expanded">
+        <tr>
+            <td>
+                <button type="button" pButton [pRowToggler]="order" variant="text" severity="secondary" iconOnly rounded>
+                    @if (expanded) {
+                        <svg data-p-icon="chevron-down"></svg>
+                    } @else {
+                        <svg data-p-icon="chevron-left"></svg>
+                    }
+                </button>
+            </td>
+            <td>{{ order.orders?.length.toLocaleString('fa-IR') ?? 0 }}</td>
+            <td>{{ order.purchaseDate | persianDate }}</td>
+            <td>{{  order.totalAmount.toLocaleString('fa-IR') + ' تومان' }}</td>
+            <td>
+                <p-tag [value]="getSeverityLabel(order.status)" [severity]="getSeverity(order.status)" />
+            </td>
+        </tr>
+    </ng-template>
+    <ng-template #expandedrow let-order>
+        <tr>
+            <td colspan="5">
+                <div class="flex text-black flex-col gap-2 py-4 px-10 bg-surface-50 dark:bg-surface-900">
+                    @for (item of order.orders; track item.id) {
+                        <div class="flex items-center gap-4">
+                            <img [src]="item.productImage" [alt]="item.productName" width="60" height="60" style="object-fit: cover" class="rounded-md shadow-md" />
+                            <div class="flex-1">
+                                <div class="font-medium">{{ item.productName }}</div>
+                                <div class="text-xs text-surface-500 flex flex-wrap gap-x-2">
+                                    @if (item.color) {
+                                        <span>رنگ: {{ item.color }}</span>
+                                    }
+                                    @if (item.size) {
+                                        <span>سایز: {{ item.size.toLocaleString('fa-IR') }}</span>
+                                    }
+                                    @if (item.weight) {
+                                        <span>وزن: {{ item.weight.toLocaleString('fa-IR') }}</span>
+                                    }
+                                    @if (item.flavor) {
+                                        <span>طعم: {{ item.flavor }}</span>
+                                    }
+                                </div>
+                            </div>
+                            <span >تعداد: {{ item.quantity.toLocaleString('fa-IR') }}</span>
+                            <div class="font-semibold">{{ 'تومان ' + item.price.toLocaleString('fa-IR') }}</div>
+                        </div>
+                    }
+                </div>
+            </td>
+        </tr>
+    </ng-template>
+</p-table>

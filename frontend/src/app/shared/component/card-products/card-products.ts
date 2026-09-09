@@ -1,46 +1,69 @@
-import { Component, Input, OnInit, OnDestroy, ViewEncapsulation, ChangeDetectionStrategy } from '@angular/core';
+import {
+  Component,
+  Input,
+  OnInit,
+  OnDestroy,
+  ViewEncapsulation,
+  ChangeDetectionStrategy,
+  inject,
+  computed,
+} from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { ButtonModule } from 'primeng/button';
-import { ToggleButtonModule } from 'primeng/togglebutton';
-import { Product } from '../../../../type';
-import { Card } from "primeng/card";
 import { Router } from '@angular/router';
+import { ButtonModule } from 'primeng/button';
 import { ToggleButton } from 'primeng/togglebutton';
+import { Card } from 'primeng/card';
 import { ShoppingCart } from '@primeicons/angular/shopping-cart';
 import { Heart } from '@primeicons/angular/heart';
 import { HeartFill } from '@primeicons/angular/heart-fill';
 import { Clock } from '@primeicons/angular/clock';
+import { DiscountInfo, Product } from '../../../../type';
+import { DiscountService } from '../../../core/services/discount-service';
+import { Subscription } from 'rxjs';
+import { LikesService } from '../../../core/services/likes-service';
+
 @Component({
   selector: 'app-card-products',
   standalone: true,
-  imports: [ButtonModule, ToggleButtonModule,Clock, ToggleButton, FormsModule, Card, ShoppingCart, HeartFill, Heart],
+  imports: [
+    ButtonModule,
+    ToggleButton,
+    FormsModule,
+    Card,
+    ShoppingCart,
+    Heart,
+    HeartFill,
+    Clock,
+  ],
   templateUrl: './card-products.html',
   encapsulation: ViewEncapsulation.None,
-  changeDetection: ChangeDetectionStrategy.Eager,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   styleUrl: './card-products.css',
 })
 export class CardProducts implements OnInit, OnDestroy {
   @Input() product!: Product;
   @Input() viewType: 'default' | 'compact' = 'default';
-  checked: boolean = false;
 
-  // --- شمارش معکوس تخفیف ---
-  timeLeft = { days: 0, hours: 0, minutes: 0, seconds: 0 };
-  isDiscountActive = false;
-  discountedPrice: number | null = null;
-  private timerId: any;
+  private readonly router = inject(Router);
+  private readonly discountService = inject(DiscountService);
+  private readonly likesService = inject(LikesService);
 
-  constructor(private readonly router: Router) {}
+  // وضعیت لایک بودن این محصول، به صورت reactive
+  liked = computed(() =>
+    this.product ? this.likesService.isLiked(this.product.id) : false
+  );
+
+  private timerId: ReturnType<typeof setInterval> | undefined;
+  discountInfo: DiscountInfo | null = null;
+  private discountSub?: Subscription;
 
   ngOnInit(): void {
-    if (this.product?.discountPercent && this.product?.price != null) {
-      this.discountedPrice =
-        this.product.price - (this.product.price * this.product.discountPercent / 100);
-    }
-
-    if (this.product?.discountExpiresAt) {
-      this.updateCountdown();
-      this.timerId = setInterval(() => this.updateCountdown(), 1000);
+    if (this.product) {
+      this.discountSub = this.discountService
+        .getCountdown$(this.product)
+        .subscribe(() => {
+          this.discountInfo = this.discountService.getDiscountInfo(this.product);
+        });
     }
   }
 
@@ -48,32 +71,19 @@ export class CardProducts implements OnInit, OnDestroy {
     if (this.timerId) {
       clearInterval(this.timerId);
     }
+    this.discountSub?.unsubscribe();
   }
 
-  private updateCountdown(): void {
-    if (!this.product?.discountExpiresAt) return;
-
-    const now = new Date().getTime();
-    const distance = new Date(this.product.discountExpiresAt).getTime() - now;
-
-    if (distance <= 0) {
-      this.isDiscountActive = false;
-      this.timeLeft = { days: 0, hours: 0, minutes: 0, seconds: 0 };
-      if (this.timerId) clearInterval(this.timerId);
-      return;
+  toggleLike(event?: Event): void {
+    event?.stopPropagation(); // جلوگیری از رفتن به صفحه‌ی جزئیات هنگام کلیک روی قلب
+    if (this.product) {
+      this.likesService.toggleLike(this.product);
     }
-
-    this.isDiscountActive = true;
-    this.timeLeft = {
-      days: Math.floor(distance / (1000 * 60 * 60 * 24)),
-      hours: Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)),
-      minutes: Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)),
-      seconds: Math.floor((distance % (1000 * 60)) / 1000)
-    };
   }
 
   goToDetails(): void {
     if (!this.product?.id) return;
-    this.router.navigate(['/products', this.product.id]);
+    this.router.navigate(['/product-detail', this.product.id]);
   }
+
 }
